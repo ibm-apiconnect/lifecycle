@@ -22,25 +22,20 @@ tiers to target different developer communities, and fine tune
 visiblity controls to target broad based or fine grained developer
 communities.  Technically, products are the primary unit of lifecycle
 management.  They have first class versioning capability enabling
-publishing and co-publishing use cases and a set of runtime states to
-provide full cradle to grave lifecycle management.
+publishing, co-publishing, and subscription migration use cases and a
+set of runtime states to provide full cradle to grave lifecycle
+management.
 
 
 
 # Creation
 
-You can create product and API definitions in our graphical design
-tool named API Designer or via the command line.
+You can create product and API definitions by using our graphical design
+tool named API Designer, our online API Manager, or via the command line.
 
-```
-apic create --type api --title Routes
-apic create --type api --title Ascents
-apic create --type product --title ClimbOn --apis "routes.yaml ascents.yaml"
-```
-
-The last command generated a simple boiler plate product definition
-referencing the APIs with a single plan all serialized via YAML so
-it's easy to read:
+Here is a simple boiler plate product definition referencing two
+OpenAPI definitions with a single plan all serialized into a YAML
+file:
 
 ```
 product: '1.0.0'
@@ -88,7 +83,7 @@ info:
   contact:
     name: Shane Claussen
     email: claussen@us.ibm.com
-    url: 'https://developer.ibm.com/apiconnect/'
+    url: 'https://developer.ibm.com/apiconnect'
   license:
     name: This is the license name
     url: 'https://developer.ibm.com/apiconnect'
@@ -97,7 +92,7 @@ info:
 
 The identity of the product is the combination of the name and the
 version values in the info section (e.g. climbon:1.0.0).  The product
-version value is defaulted to 1.0.0 based on the [Semantic
+version value is typically defaulted to 1.0.0 based on the [Semantic
 Versioning](http://semver.org) MAJOR.MINOR.PATCH syntax.
 
 
@@ -107,8 +102,8 @@ Versioning](http://semver.org) MAJOR.MINOR.PATCH syntax.
 The APIs section references the OpenAPI definitions composed by this
 product.  The name 'routes' and 'ascents' are local to the product
 definition and can be used to discriminate API consumption details at
-the plan level.  Products need to reference atleast one API to be
-published.
+the plan level.  In order to be published to an API Connect catalog,
+API products need to reference atleast one API.
 
 ```
 apis:
@@ -124,8 +119,7 @@ apis:
 
 The product visibility section enables product managers to control the
 visibility of API products published to the developer portal.  When
-the API product is created in the toolkit it receives the following
-default values:
+the API product is created it the visibility is defaulted as follows:
 
 ```
 visibility:
@@ -201,7 +195,7 @@ plans:
 ```
 
 Beyond the per plan approval and rate limiting capabilities, each plan
-also has an optional apis section that can be used to limit the APIs
+also has an optional `apis` section that can be used to limit the APIs
 provided by the plan to a subset of the APIs defined by the product
 and/or provide more fine grained operation level rate limiting.
 
@@ -267,14 +261,14 @@ plans:
       hard-limit: false
 ```
 
-The bronze plan is a relatively limited plan targeting a large
+The *bronze* plan is a relatively limited plan targeting a large
 community of developers.  It restricts developers to the the routes
 list and retrieve operations using a limited rate limit (the ascents
 API and its operations are not made available to the bronze tier).  To
 simplify the developer onboarding process the product manager does not
 require subscription approval.
 
-The silver plan enables developers to use all of the ascents API's
+The *silver* plan enables developers to use all of the ascents API's
 operations to create a personalized ascent record, but the plan
 prohibits the update operations on the routes API used to add, update,
 and delete routes.  The silver plan also enables a more liberal rate
@@ -284,18 +278,9 @@ been added (this might be done due to the server load of particular
 operations).  Due to its power the product manager has decided to
 require subscription approval.
 
-The gold plan excludes the apis section in the plan altogether,
+The *gold* plan excludes the apis section in the plan altogether,
 enabling developers to access all operations from all the APIs defined
 in the product definition.  A much more permissive rate limit is
 provided with the gold plan and there's no longer a hard limit
 enabling developers to exceed the limit.  Again, due to the power of
 this API it requires approval.
-
-
-
-# Summary
-
-I hope you found the information above on the API product development
-artifact useful!  Feel free to [contact
-me](emailto:claussen@us.ibm.com) to ask questions or to provide
-feedback.
