@@ -8,7 +8,7 @@ Authors:
 
 
 
-# Introduction
+## Introduction
 
 APIs that are ready to be published into production have a much
 broader set of considerations than APIs under development.  The key
@@ -21,7 +21,7 @@ product versions will need to be considered.
 
 
 
-# Catalog Configuration
+## Catalog Configuration
 
 APIs being published into production are typically phased through
 atleast two catalogs, sometimes more.  In this article we will assume
@@ -74,7 +74,7 @@ Sample script(s):
 
 
 
-# Packaging APIs into API Products
+## Packaging APIs into API Products
 
 In order for APIs to be published to production they must be packaged
 in API Products (referred to here as products).  Products contain one
@@ -126,7 +126,7 @@ either the Tourism or the Climbon product.
 
 
 
-# Product Lifecycle and Co-Publishing
+## Product Lifecycle and Co-Publishing
 
 API products transition through a set of states when they are deployed
 to a catalog that are important to understand.  Here is a summary of
@@ -194,7 +194,7 @@ catalog.
 
 
 
-# API Lifecycle
+## API Lifecycle
 
 The APIs referenced by products that have been published to catalogs
 also have the following lifecycle states:
@@ -237,7 +237,7 @@ referencing the API.
 
 
 
-# Product Lifecycle Scenarios
+## Product Lifecycle Scenarios
 
 The ability to co-publish multiple versions of a product surfaces the
 issues of migrating subscriptions between multiple versions.
@@ -249,7 +249,7 @@ Here are some common scenarios.
 
 
 
-## **Replace**
+### **Replace**
 
 In this scenario the API provider team discovers spelling errors in
 the descriptions of the API operations that have already been
@@ -286,7 +286,7 @@ prior product.
 
 
 
-## **Supersede**
+### **Supersede**
 
 In addition to low risk changes in the API, a process needs to exist
 to support breaking or higher risk changes in the API set.  Here is a
@@ -325,7 +325,7 @@ T8. Once all consumers have migrated to Climbon v200, Retire/Remove Climbon v100
 
 
 
-## **Other**
+### **Other**
 
 Another thing to consider is that subsequent versions of a product may
 take a very different shape than prior versions.  For example, as the
@@ -349,13 +349,13 @@ product or plan level, or perform provider side migration tasks.
 
 
 
-# Partial Publishing
+## Partial Publishing
 
 *...more to come...*
 
 
 
-# Product Visibility
+## Product Visibility
 
 When products are published they are visible to all consumers of the
 catalog (typically via the developer portal user experience).  There
@@ -369,7 +369,7 @@ in the Published or Deprecated states.
 
 
 
-# Sample Scripts
+## Sample Scripts
 
 As we mentioned above, API Connect provides CLIs & REST operations to
 support all the lifecycle capability described above.  The following
@@ -422,7 +422,7 @@ and PATCH also requires these command line flags: `-H
 
 
 
-### Provider Authentication Script
+#### Provider Authentication Script
 
 Authenticate as the user who will be performing the product publishing and catalog management tasks.
 
@@ -446,7 +446,7 @@ Notes:
 
 
 
-### Product Stage and Publish Script
+#### Product Stage and Publish Script
 
 Although it's possible to go directly from the file system into the
 Published state, it's typical for production scenarios that a two step
@@ -479,7 +479,7 @@ Notes:
 
 
 
-### Consumer Organization and Consumer User Creation Script
+#### Consumer Organization and Consumer User Creation Script
 
 ```
 curl -X POST https://$(MANAGEMENT)/api/user-registries/$(PORG)/$(CATALOG_IDP)/users -i -s -k \
@@ -505,7 +505,7 @@ Notes:
 
 
 
-### Consumer Authentication Script
+#### Consumer Authentication Script
 
 Authenticate as the user who will be creating the consumer application
 and subscribing to the product.
@@ -531,7 +531,7 @@ Notes:
 
 
 
-### Consumer Application and Product Subscription Script
+#### Consumer Application and Product Subscription Script
 
 ```
 curl -X POST https://$(MANAGEMENT)/consumer-api/orgs/$(CORG)/apps -i -s -k \
@@ -550,7 +550,7 @@ curl -X POST https://$(MANAGEMENT)/consumer-api/orgs/$(CORG)/subscriptions -i -s
 
 
 
-### Product Deprecation Script
+#### Product Deprecation Script
 
 ```
 curl -X PATCH $(CLIMBON100_PRODUCT_URL) -i -s \
@@ -560,7 +560,7 @@ curl -X PATCH $(CLIMBON100_PRODUCT_URL) -i -s \
 
 
 
-### Retire/Remove Script
+#### Retire/Remove Script
 
 ```
 curl -X PATCH $(CLIMBON100_PRODUCT_URL) -i -s \
@@ -573,7 +573,7 @@ curl -X DELETE $(CLIMBON100_PRODUCT_URL) -i -s \
 
 
 
-### API Offline/Online Script
+#### API Offline/Online Script
 
 ```
 curl -X POST https://$(MANAGEMENT)/api/catalogs/$(PORG)/$(CATALOG)/apis/routes/100 -i -s \
@@ -587,7 +587,7 @@ curl -X POST https://$(MANAGEMENT)/api/catalogs/$(PORG)/$(CATALOG)/apis/routes/1
 
 
 
-### Product Replace Script
+#### Product Replace Script
 
 ```
 curl -X POST https://$(MANAGEMENT)/api/catalogs/$(PORG)/$(CATALOG)/stage -i -s \
@@ -621,7 +621,7 @@ Notes:
 
 
 
-### Product Supersede Script
+#### Product Supersede Script
 
 ```
 curl -X POST https://$(MANAGEMENT)/api/catalogs/$(PORG)/$(CATALOG)/stage -i -s \
