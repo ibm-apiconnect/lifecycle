@@ -6,14 +6,14 @@ Authors:
 
 
 
-# Introduction
+## Introduction
 
 Products are used to package APIs into a set of consumption plans to
 power the API lifecycle.
 
 
 
-# Overview
+## Overview
 
 Products draw from both business and technical disciplines.  At a
 business level, they enable product managers the flexibility to
@@ -28,7 +28,7 @@ management.
 
 
 
-# Creation
+## Creation
 
 You can create product and API definitions by using our graphical design
 tool named API Designer, our online API Manager, or via the command line.
@@ -69,7 +69,7 @@ plans:
 
 
 
-# Info
+## Info
 
 Below is a more complete and self explanatory example of a product
 info section:
@@ -97,7 +97,7 @@ Versioning](http://semver.org) MAJOR.MINOR.PATCH syntax.
 
 
 
-# APIs
+## APIs
 
 The APIs section references the OpenAPI definitions composed by this
 product.  The name 'routes' and 'ascents' are local to the product
@@ -115,7 +115,7 @@ apis:
 
 
 
-# Visibility
+## Visibility
 
 The product visibility section enables product managers to control the
 visibility of API products published to the developer portal.  When
@@ -167,7 +167,7 @@ visibility:
 
 
 
-# Plans
+## Plans
 
 Developers obtain a product by subscribing to one of the plans
 described in the product definition's plans section.  Products must
