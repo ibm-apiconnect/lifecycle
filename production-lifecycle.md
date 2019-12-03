@@ -1,3 +1,13 @@
+# Production Lifecycle
+
+Authors:
+- [Shane Claussen](mailto:claussen@us.ibm.com), Distinguished Engineer & Chief Architect, API Connect
+- [Sumanto Biswas](mailto:biswas@us.ibm.com), Development Lead, API Connect
+- **Pramodh Ramesh**, Offering Management Lead
+- **Anh Le**, Developer
+
+
+
 # Introduction
 
 APIs that are ready to be published into production have a much
@@ -5,7 +15,9 @@ broader set of considerations than APIs under development.  The key
 difference is that these APIs are likely updates to existing APIs that
 are already in production.  Thus, the new version of the API needs to
 be published without disrupting the existing consumer applications
-subscribed to and invoking the prior version(s).
+subscribed to and invoking the prior version(s).  In addition,
+strategies for migrating consumer application subscriptions between
+product versions will need to be considered.
 
 
 
@@ -15,19 +27,19 @@ APIs being published into production are typically phased through
 atleast two catalogs, sometimes more.  In this article we will assume
 two catalogs, one named **staging** and another named **production**.
 Those catalogs may be part of the same API provider organization, two
-different providers on the same API Connect instance, or two different
-provider organizations in two physically disparate instances.  The
-instance, provider organization, and catalog cardinaity is dependent
-on organizational and compliance criteria that are outside the scope
-of this article.
+different provider organizations in the same API Connect instance, or
+two different provider organizations in two physically disparate
+instances.  The instance, provider organization, and catalog
+cardinaity is dependent on corporate organization and compliance
+criteria that are outside the scope of this article.
 
-API Connect has a boolean catalog configuration property named
-`production` that determines the catalog type.  For staging and
-production catalogs we recommend setting this property `true`.  The
-`true` value result in behavior that requires new API products being
-published to the catalog to have a unique name and/or version that
-doesn't conflict with existing API products that already exist in the
-catalog.
+API Connect supports a boolean catalog configuration property named
+`production` that has a critical impact on the behavior of the
+catalog.  **For staging and production catalogs we recommend setting
+this property `true`.** The `true` value results in behavior that
+requires new API products being published to the catalog to have a
+unique name and/or version that doesn't conflict with existing API
+products that already exist in the catalog.
 
 For example, a production typed catalog can support:
 
@@ -49,14 +61,16 @@ However, the following is not supported in a production typed catalog:
 3. Publish Climbon v100 product
 ```
 
-Step 3 above would fail for a production typed catalog.  Even though
-the product has the same name and version, there is no guarantee that
-its contents are the same.  Publishing a different set of contents
-would thus likely result in a disruption for the existing consumers of
-the Climbon v100 product.  In summary, production typed catalogs
-provide some safety constraints requiring explicit governance and
-control in production to minimize disruption for existing API
-consumers.
+Step 3 would fail for a production typed catalog.  Even though the
+product has the same name and version, there is no guarantee that its
+contents are the same.  Publishing a different set of contents would
+thus likely result in a disruption for the existing consumers of the
+Climbon v100 product.  In summary, production typed catalogs provide
+some safety constraints requiring explicit governance and control in
+production to minimize disrupting existing API consumers.
+
+Sample script(s):
+- [Setting the catalog production property to true](./sh/catalog-production-true.sh)
 
 
 
