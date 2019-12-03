@@ -129,13 +129,13 @@ information.
 
 
 
-## Publishing
+## API Product Deployment
 
-In API Connect, the logical runtime or stack is represented by a
-catalog.  In order to socialize and/or enforce APIs the product that
-references the APIs must be deployed to a catalog.  API products can
-either be published to a catalog from the online API Manager drafts
-location or from a file system.
+In API Connect, the logical runtime stack is represented by the
+catalog concept.  In order to socialize and/or enforce APIs the
+product that references the APIs must be deployed to a catalog.  API
+products can either be deployed to a catalog from the online API
+Manager drafts location or from a file system.
 
 For most production use case cases, we recommend keeping the API
 product and OpenAPI definitions in a first class source code control
@@ -143,6 +143,14 @@ management system (eg git).  This enables the artifacts to be under a
 first class version control with fully support for merging, branch
 management, et al, and supports first class integration with CICD
 pipelines to support deploying and testing the artifacts.
+
+The API Connect CLIs and REST operations support either *staging* or
+*publishing* the product to the catalog.  The *publish* operation
+performs staging and publishing as a single macro operation (see the
+product lifecycle state machine below).  For production catalog use
+cases, particularly those leveraging API Connect's governance
+capabilities, we recommend performing the staging and publishing steps
+independently.
 
 
 
@@ -192,9 +200,9 @@ scenario when publishing subsequent versions of the same product over
 extended periods of time (eg weeks/months/years):
 
 ```
-T1. Publish Climbon v100
-T2. Publish Climbon v101 and Deprecate Climbon v100
-T3. Publish Climbon v200
+T1. Stage/Publish Climbon v100
+T2. Stage/Publish Climbon v101 and Deprecate Climbon v100
+T3. Stage/Publish Climbon v200
 T4. Deprecate Climbon v101 and Climbon v200
 T5. Retire/Remove Climbon v101 and Climbon v200
 ```
@@ -211,6 +219,8 @@ they remain invokeable, but consumers can no longer subscribe.
 
 And finally at time 5, the APIs are retired and removed from the
 catalog.
+
+![Lifecycle States](./lifecycle-states.png)
 
 
 
@@ -250,10 +260,6 @@ impacting the other APIs referenced by the product.
 In a scenario where an API is referenced by multiple products, taking
 it Offline impacts all of the subscribers of all the products
 referencing the API.
-
-
-![Lifecycle States](./lifecycle-states.png)
-
 
 
 
