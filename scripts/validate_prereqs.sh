@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Check if curl exists
-hash abc
+hash jq
 if [ $? -ne 0 ]; then
     echo "Script needs jq"
     exit 1
