@@ -124,6 +124,26 @@ Thus, the result is there's only one copy of the Routes v100 API in
 the catalog, and it can be invoked by consumers who subscribe to
 either the Tourism or the Climbon product.
 
+See the [article on API products](./api-products.md) for more detailed
+information.
+
+
+
+## Publishing
+
+In API Connect, the logical runtime or stack is represented by a
+catalog.  In order to socialize and/or enforce APIs the product that
+references the APIs must be deployed to a catalog.  API products can
+either be published to a catalog from the online API Manager drafts
+location or from a file system.
+
+For most production use case cases, we recommend keeping the API
+product and OpenAPI definitions in a first class source code control
+management system (eg git).  This enables the artifacts to be under a
+first class version control with fully support for merging, branch
+management, et al, and supports first class integration with CICD
+pipelines to support deploying and testing the artifacts.
+
 
 
 ## Product Lifecycle and Co-Publishing
