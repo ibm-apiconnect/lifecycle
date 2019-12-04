@@ -25,4 +25,10 @@ These scripts require *...more later...*
 
 ## Scripts
 
-- [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization.
+- [catalog-settings.sh](./scripts/catalog-settings.sh): Sets the catalog setting *production* property to *true*
+- [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization
+- [cicd.sh](./scripts/cicd.sh): Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down
+- [replace.sh](./scripts/replace.sh): Replace an old version of a product with a new version in a production catalog
+- [supersede.sh](./scripts/replace.sh): Supersede an old version of a product with a new version in a production catalog
+- [migrate-all-subscriptions.sh](./scripts/migrate-all-subscriptions.sh): Publish a new product version, superseding a prior version, and then migrate all the subscriptions
+- [migrate-subscription.sh](./scripts/migrate-subscription.sh): Publish a new product version, superseding a prior version, and migrate a single subscription

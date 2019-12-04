@@ -69,9 +69,6 @@ Climbon v100 product.  In summary, production typed catalogs provide
 some safety constraints requiring explicit governance and control in
 production to minimize disrupting existing API consumers.
 
-Sample script(s):
-- [Setting the catalog production property to true](./sh/catalog-production-true.sh)
-
 
 
 ## Packaging APIs into API Products
