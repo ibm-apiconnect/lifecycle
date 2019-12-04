@@ -25,4 +25,4 @@ These scripts require *...more later...*
 
 ## Scripts
 
-- [Script](./sh/create-provider-organization.sh): Creates a provider organization owner and a provider organization.
+- [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization.
