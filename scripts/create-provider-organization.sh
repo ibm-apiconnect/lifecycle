@@ -4,9 +4,19 @@
 # Create some aliases and source environment variables
 source ./env.sh
 
+response=`curl -s -k -X POST -H "Content-Type:application/json" -H "Accept:application/json" https://$MANAGEMENT/api/token \
+    	       -d "{ \"realm\":\"$ADMIN_IDP\",
+	       	     \"username\":\"admin\",
+		     \"password\":\"8iron-hide\",
+		     \"client_id\":\"599b7aef-8841-4ee2-88a0-84d49c4d6ff2\",
+		     \"client_secret\":\"0ea28423-e73b-47d4-b40e-ddb45c48bb0c\",
+		     \"grant_type\":\"password\" }"`
+echo $response | jq .
+export ADMIN_TOKEN=`echo $response | jq -r '.access_token'`
+echo $ADMIN_TOKEN
 
 echo Create the Provider Organization Owner
-response=`post https://$MANAGEMENT/api/user-registries/admin/$PROVIDER_USER_REGISTRY/users \
+response=`curl -s -k -X POST -H "Content-Type:application/json" -H "Accept:application/json" https://$MANAGEMENT/api/user-registries/admin/$PROVIDER_USER_REGISTRY/users \
                -H "Authorization:Bearer $ADMIN_TOKEN" \
                -d "{ \"username\": \"$PROVIDER_USERNAME\",
                   \"password\": \"$PROVIDER_PASSWORD\",

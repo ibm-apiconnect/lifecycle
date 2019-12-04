@@ -1,6 +1,9 @@
-alias post="curl -s -k -X POST -H \"Content-Type:application/json\" -H \"Accept:application/json\""
+alias post='curl -s -k -X POST -H \"Content-Type:application/json\" -H \"Accept:application/json\"'
 
-MANAGEMENT=localhost:3003
+MANAGEMENT=api.admin-201841-1202.loki.dev.ciondemand.com
+
+ADMIN_IDP=admin/default-idp-1
+export ADMIN_PASSWORD=${ADMIN_PASSWORD:-8iron-hide}
 
 ADMIN_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI4ZWUwNzg4YS0yYzRhLTQ4MmItOGFkNS02NDUwMmZjZTI5NGMiLCJuYW1lc3BhY2UiOiIxYmRmMTA0YS1lNWM5LTRlOWQtYmU5Mi1hNDQ0ZjRlNjA4ZGI6NzI2MDdmMTctODQxOC00MzJiLTgyNGItM2Q3YmJlZDE3M2IzOjc4YWNhYzU5LWU2NzAtNDcz\
 ZS05ZmU4LTQwNTZkMjY1YTQ3ZSIsImF1ZCI6Ii9hcGkvY2xvdWQvcmVnaXN0cmF0aW9ucy9mZjJhYWNhYS03MjAzLTRmMTEtYmViOS1jNDIzYTA0NmZiZmMiLCJzdWIiOiIvYXBpL3VzZXItcmVnaXN0cmllcy8xYmRmMTA0YS1lNWM5LTRlOWQtYmU5Mi1hNDQ0ZjRlNjA4ZGIvNzI2MDdmMTctODQxOC00MzJiLTgyNGItM2Q3YmJlZ\
