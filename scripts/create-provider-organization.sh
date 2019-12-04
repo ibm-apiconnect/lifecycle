@@ -19,20 +19,39 @@ echo Create the Provider Organization Owner
 response=`curl -s -k -X POST -H "Content-Type:application/json" -H "Accept:application/json" https://$MANAGEMENT/api/user-registries/admin/$PROVIDER_USER_REGISTRY/users \
                -H "Authorization:Bearer $ADMIN_TOKEN" \
                -d "{ \"username\": \"$PROVIDER_USERNAME\",
-                  \"password\": \"$PROVIDER_PASSWORD\",
-                  \"email\": \"$PROVIDER_EMAIL\",
-                  \"first_name\": \"$PROVIDER_FIRSTNAME\",
-                  \"last_name\": \"$PROVIDER_LASTNAME\" }"`
+                     \"password\": \"$PROVIDER_PASSWORD\",
+                     \"email\": \"$PROVIDER_EMAIL\",
+                     \"first_name\": \"$PROVIDER_FIRSTNAME\",
+                     \"last_name\": \"$PROVIDER_LASTNAME\" }"`
 echo $response | jq .
-userUrl=`echo $response | jq '.url' `
+userUrl=`echo $response | jq -r '.url' `
 
 
 echo Create the Provider Organization
-response=`post https://$MANAGEMENT/api/cloud/orgs \
+response=`curl -s -k -X POST -H "Content-Type:application/json" -H "Accept:application/json"  https://$MANAGEMENT/api/cloud/orgs \
                -H "Authorization:Bearer $ADMIN_TOKEN" \
                -d "{ \"name\": \"$PORG_NAME\",
-                  \"title\": \"$PORG_TITLE\",
-                  \"org_type\": \"provider\",
-                  \"owner_url\": $userUrl }"`
+	             \"title\": \"$PORG_TITLE\",
+                     \"org_type\": \"provider\",
+                     \"owner_url\": \"$userUrl\" }"`
 echo $response | jq .
-orgUrl=`echo $userResponse | jq '.url' `
+orgUrl=`echo $response | jq -r '.url' `
+
+
+echo Get the Provider Organization Owner and Organization
+response=`curl -s -k -X GET -H "Accept:application/json" -H "Authorization:Bearer $ADMIN_TOKEN" $userUrl`
+echo $response | jq .
+
+response=`curl -s -k -X GET -H "Accept:application/json" -H "Authorization:Bearer $ADMIN_TOKEN" $orgUrl`
+echo $response | jq .
+
+
+echo Delete the Provider Organization Owner and Organization
+response=`curl -s -k -X DELETE -H "Accept:application/json" -H "Authorization:Bearer $ADMIN_TOKEN" $orgUrl`
+echo $response | jq .
+
+response=`curl -s -k -X DELETE -H "Accept:application/json" -H "Authorization:Bearer $ADMIN_TOKEN" $userUrl`
+echo $response | jq .
+
+
+echo Done with Provider Organization Owner and Organization delete
