@@ -117,9 +117,18 @@ apis:
 
 ## Visibility
 
-The product visibility section enables product managers to control the
-visibility of API products published to the developer portal.  When
-the API product is created it the visibility is defaulted as follows:
+By default published products are visible to the entire set of catalog
+consumers.  However, API Connect supports restricting the visibility
+to a subset of consumers.  The subset can be defined by listing
+individual consumers, or as a *group* of consumers.  A product's
+visibility can be defined in the product definition itself, defined
+when the product is published, or updated while the product is
+published.  Visibilty is a function of two finer grained capabilities.
+The first is the consumers who can see the product in the catalog, and
+the second is the consumers who can subscribe to the product.
+
+When the API product is created it the visibility is defaulted as
+follows:
 
 ```
 visibility:

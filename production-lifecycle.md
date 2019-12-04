@@ -131,11 +131,11 @@ information.
 
 ## API Product Deployment
 
-In API Connect, the logical runtime stack is represented by the
-catalog concept.  In order to socialize and/or enforce APIs the
-product that references the APIs must be deployed to a catalog.  API
-products can either be deployed to a catalog from the online API
-Manager drafts location or from a file system.
+In API Connect, a runtime stack is represented by the catalog
+construct.  In order to socialize and/or enforce APIs the product that
+references the APIs must be deployed to a catalog.  API products can
+either be deployed to a catalog from the online API Manager drafts
+location or directly from the file system.
 
 For most production use case cases, we recommend keeping the API
 product and OpenAPI definitions in a first class source code control
@@ -271,8 +271,6 @@ Migration scenarios range from relatively simple to very complex.  It
 is important for API provider organizations to clearly define what
 level of freedom of definition they intend to support.
 
-Here are some common scenarios.
-
 
 
 ### **Replace**
@@ -375,80 +373,12 @@ product or plan level, or perform provider side migration tasks.
 
 
 
-## Partial Publishing
-
-*...more to come...*
-
-
-
-## Product Visibility
-
-When products are published they are visible to all consumers of the
-catalog (typically via the developer portal user experience).  There
-are cases though where there are products published for a single
-consumer or group of consumers.  API Connect supports this by
-providing the option of changing the default visibility when the
-product is published, or updating the visibility for product that is
-in the Published or Deprecated states.
-
-*...more to come...*
-
-
-
 ## Sample Scripts
 
-As we mentioned above, API Connect provides CLIs & REST operations to
-support all the lifecycle capability described above.  The following
-are a sample set of curl scripts to support many common publishing
-tasks.
-
-The sample scripts assume a production catalog that has been properly
-configured.  For example, the catalogs identity provider and gateway
-services should be configured prior to invoking these scripts.
-
-All of the sample scripts use some subset of the following environment
-variables:
-
-```
-MANAGEMENT=management-server-address.com
-
-PROVIDER_REALM=provider/corporate-idp
-PROVIDER_USERNAME=user@acme.com
-PROVIDER_PASSWORD=some-password
-PROVIDER_TOKEN=<response from provider login step below>
-
-PORG=acme
-CATALOG=production
-
-CLIMBON100_PRODUCT_URL=<product url of climbon 100 when published>
-CLIMBON101_PRODUCT_URL_=<product url of climbon 101  when published>
-CLIMBON200_PRODUCT_URL=<product url of climbon 200 when published>
-
-CONSUMER_IDP=consumer-user-registry
-CONSUMER_REALM=consumer:acme:production/consumer-idp
-CONSUMER_USERNAME=consumer@acme.com
-CONSUMER_PASSWORD=some-password
-CONSUMER_TOKEN=<response from consumer login step below>
-CONSUMER_EMAIL=consumer@acme.com
-CONSUMER_FIRSTNAME=Andre
-CONSUMER_LASTNAME=Consumer
-CONSUMER_OWNER_URL=<user url of consumer org owner>
-
-CORG=corg
-CORG_TITLE=<some corg title>
-
-APP=test-app
-APP_TITLE=<some app title>
-```
-
-To keep the curl commands simple, the *Content-Type* and *Accept*
-headers have been removed from the curl operations.  Thus, each POST
-and PATCH also requires these command line flags: `-H
-'Content-Type:application/json' -H 'Accept:application/json'`
+### Provider Organization Creation
 
 
 
-#### Provider Authentication Script
 
 Authenticate as the user who will be performing the product publishing and catalog management tasks.
 
@@ -677,3 +607,9 @@ Notes:
 
 - The CLIMBON200_PRODUCT_URL in the second curl request is the *url*
   property from the response of the first curl command.
+
+
+
+## Reference
+
+- [Sample Scripts](./sample-scripts.md)
