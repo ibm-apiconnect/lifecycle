@@ -22,6 +22,8 @@ be used for CICD automation tasks:
 - [provider-organization-create-delete.sh](./scripts/provider-organization-create-delete.sh): Create and delete a provider owner and organization
 - [provider-organization-introspect.sh](./scripts/provider-organization-introspect.sh): Introspect the resources in a provider organization
 - [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect a catalog
+- [space-introspect.sh](./scripts/space-introspect.sh): Introspect a space
+- [production-provider-organization-catalog-spaces.sh](./scripts/production-provider-organization-catalog-spaces.sh): Create a product provider, catalog, and spaces
 - provider-organization-member-create.sh: Add users to a provider organization
 - consumer-organization-create.sh: Create a consumer organization
 - consumer-organization-member-create.sh: Add users to a provider organization

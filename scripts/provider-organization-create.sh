@@ -36,7 +36,7 @@ export token=`echo ${response} | jq -r '.access_token'`
 
 echo
 echo Create the Provider Organization Owner
-response=`curl https://${management}/api/user-registries/admin/${provider_user_registry}/users \
+response=`curl -X POST https://${management}/api/user-registries/admin/${provider_user_registry}/users \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}" \
                -d "{ \"username\": \"${provider_username}\",
@@ -51,7 +51,7 @@ export owner_url=`echo ${response} | jq -r '.url'`
 
 echo
 echo Create the Provider Organization
-response=`curl https://${management}/api/cloud/orgs \
+response=`curl -X POST https://${management}/api/cloud/orgs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}" \
                -d "{ \"name\": \"${porg}\",
