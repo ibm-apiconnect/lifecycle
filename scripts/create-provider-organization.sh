@@ -29,7 +29,7 @@ response=`curl https://${management}/api/user-registries/admin/${provider_user_r
                      \"first_name\": \"${provider_firstname}\",
                      \"last_name\": \"${provider_lastname}\" }"`
 echo ${response} | jq .
-export user_url=`echo ${response} | jq _r '.url'`
+export owner_url=`echo ${response} | jq -r '.url'`
 
 
 
@@ -42,7 +42,7 @@ response=`curl https://${management}/api/cloud/orgs \
                      \"org_type\": \"provider\",
                      \"owner_url\": \"${owner_url}\" }"`
 echo ${response} | jq .
-export owner_url=`echo ${response} | jq -r '.url'`
+export porg_url=`echo ${response} | jq -r '.url'`
 
 
 
