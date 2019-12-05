@@ -1,18 +1,16 @@
-alias post='curl -s -k -X POST -H \"Content-Type:application/json\" -H \"Accept:application/json\"'
+export management=api.admin-201841-1202.loki.dev.ciondemand.com
 
-MANAGEMENT=api.admin-201841-1202.loki.dev.ciondemand.com
+export admin-idp=admin/default-idp-1
+export admin-password=${admin-password:-8iron-hide}
 
-ADMIN_IDP=admin/default-idp-1
-export ADMIN_PASSWORD=${ADMIN_PASSWORD:-8iron-hide}
+export provider-user-registry=api-manager-lur
+export provider-idp=provider/default-idp-2
 
-PROVIDER_USER_REGISTRY=api-manager-lur
-PROVIDER_IDP=provider/default-idp-2
+export provider-username=steve
+export provider-password=${provider-password:-8iron-hide}
+export provider-email=steve@acme.com
+export provider-firstname=steve
+export provider-lastname=owner
 
-PROVIDER_USERNAME=steve
-PROVIDER_PASSWORD=8iron-hide
-PROVIDER_EMAIL=steve@acme.com
-PROVIDER_FIRSTNAME=Steve
-PROVIDER_LASTNAME=Owner
-
-PORG_NAME=acme
-PORG_TITLE=Acme
+export porg-name=acme
+export porg-title=acme

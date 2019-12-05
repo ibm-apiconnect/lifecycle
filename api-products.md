@@ -303,3 +303,8 @@ in the product definition.  A much more permissive rate limit is
 provided with the gold plan and there's no longer a hard limit
 enabling developers to exceed the limit.  Again, due to the power of
 this API it requires approval.
+
+
+
+# References:
+- [Working with the toolkit](https://www.ibm.com/support/knowledgecenter/en/SSMNED_2018/com.ibm.apic.toolkit.doc/capim_cli_working_with.html)
