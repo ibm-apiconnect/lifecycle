@@ -40,3 +40,4 @@ be used for CICD automation tasks:
 - catalog-property-management.sh:
 - notification-template-management.sh:
 - role-defaults-management.sh:
+- catalog-replicate.sh:
