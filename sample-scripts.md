@@ -25,15 +25,29 @@ These scripts require *...more later...*
 
 ## Scripts
 
-- [introspect-cloud-scope.sh](./scripts/introspect-cloud-scope.sh): Introspect the cloud scoped resources
-- [introspect-admin-organization.sh](./scripts/introspect-admin-organization.sh): Introspect the resources in the admin organization
-- [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization
-- [provision-organization-members.sh](./scripts/provision-organization-members.sh): Creates a provider organization owner and a provider organization
+*NOTE: These are currently a work in progress*
+
+*Scope Management*:
+- [cloud-scope-introspection.sh](./scripts/cloud-scope-introspection.sh): Introspect the cloud scoped resources
+- [admin-organization-introspection.sh](./scripts/admin-organization-introspection.sh): Introspect the resources in the admin organization
+- [provider-organization-create.sh](./scripts/provider-organization-create.sh): Create a provider organization
+- [provider-organization-introspection.sh](./scripts/provider-organization-introspection.sh): Introspect the resources in a provider organization
+- [provider-organization-member-create.sh](./scripts/provider-organization-member-create.sh): Add users to a provider organization
+- [catalog-introspection.sh](./scripts/catalog-introspection.sh): Introspect a catalog
+- [consumer-organization-create.sh](./scripts/consumer-organization-create.sh): Create a consumer organization
+- [consumer-organization-member-create.sh](./scripts/provider-organization-member-create.sh): Add users to a provider organization
 - [manage-catalog-properties.sh](./scripts/manage-catalog-properties.sh): Manage catalog properties
 
-- [catalog-settings.sh](./scripts/catalog-settings.sh): Sets the catalog setting *production* property to *true*
-- [cicd.sh](./scripts/cicd.sh): Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down
-- [replace.sh](./scripts/replace.sh): Replace an old version of a product with a new version in a production catalog
-- [supersede.sh](./scripts/replace.sh): Supersede an old version of a product with a new version in a production catalog
-- [migrate-all-subscriptions.sh](./scripts/migrate-all-subscriptions.sh): Publish a new product version, superseding a prior version, and then migrate all the subscriptions
-- [migrate-subscription.sh](./scripts/migrate-subscription.sh): Publish a new product version, superseding a prior version, and migrate a single subscription
+*Development API Lifecycle*:
+- [development-cicd.sh](./scripts/development-publish.sh): Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down
+
+*Production API Lifecycle*:
+- [production-replace.sh](./scripts/production-replace.sh): Replace an old version of a product with a new version in a production catalog
+- [production-supersede.sh](./scripts/production-replace.sh): Supersede an old version of a product with a new version in a production catalog
+- [production-migrate-all-subscriptions.sh](./scripts/production-migrate-all-subscriptions.sh): Publish a new product version, superseding a prior version, and then migrate all the subscriptions
+- [production-migrate-subscription.sh](./scripts/production-migrate-subscription.sh): Publish a new product version, superseding a prior version, and migrate a single subscription
+
+*Other*:
+- [catalog-property-management.sh](./scripts/catalog-property-management.sh):
+- [notification-template-management.sh](./scripts/notification-template-management.sh):
+- [role-defaults-management.sh](./scripts/role-defaults-management.sh):
