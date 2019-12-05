@@ -1,10 +1,21 @@
 #!/bin/bash
 
+
 # Functions/aliases/base environment variables
 source ./env.sh
 
 
+# Environment variables for the user and porg names created
+# - These are purposefully different then the defaults since this
+# - scripts creates and deletes the provider organization and user
+# - thus those organizations are not used by other scripts
+export provider_username=steve-dynamic
+export provider_email=steve-dynamic@acme.com
+export porg=acme-dynamic
 
+
+
+echo
 echo Authenticate as the admin user
 response=`curl -X POST https://${management}/api/token \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
@@ -19,6 +30,7 @@ export token=`echo ${response} | jq -r '.access_token'`
 
 
 
+echo
 echo Create the Provider Organization Owner
 response=`curl https://${management}/api/user-registries/admin/${provider_user_registry}/users \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
@@ -29,10 +41,11 @@ response=`curl https://${management}/api/user-registries/admin/${provider_user_r
                      \"first_name\": \"${provider_firstname}\",
                      \"last_name\": \"${provider_lastname}\" }"`
 echo ${response} | jq .
-export porg_url=`echo ${response} | jq -r '.url'`
+export owner_url=`echo ${response} | jq -r '.url'`
 
 
 
+echo
 echo Create the Provider Organization
 response=`curl https://${management}/api/cloud/orgs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
@@ -46,22 +59,7 @@ export porg_url=`echo ${response} | jq -r '.url'`
 
 
 
-echo Get the Provider Organization Owner
-response=`curl -X GET ${owner_url} \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Provider Organization
-response=`curl -X GET ${porg_url} \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
+echo
 echo Delete the Provider Organization
 response=`curl -X DELETE ${porg_url} \
                -s -k -H "Accept: application/json" \
@@ -70,8 +68,9 @@ echo ${response} | jq .
 
 
 
+echo
 echo Delete the Provider Organization Owner
-response=`curl -X DELETE ${owner_url}
+response=`curl -X DELETE ${owner_url} \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .

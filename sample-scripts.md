@@ -28,12 +28,12 @@ These scripts require *...more later...*
 *NOTE: These are currently a work in progress*
 
 *Scope Management*:
-- [cloud-scope-introspection.sh](./scripts/cloud-scope-introspection.sh): Introspect the cloud scoped resources
-- [admin-organization-introspection.sh](./scripts/admin-organization-introspection.sh): Introspect the resources in the admin organization
+- [cloud-scope-introspect.sh](./scripts/cloud-scope-introspect.sh): Introspect the cloud scoped resources
+- [admin-organization-introspect.sh](./scripts/admin-organization-introspect.sh): Introspect the resources in the admin organization
 - [provider-organization-create.sh](./scripts/provider-organization-create.sh): Create a provider organization
-- [provider-organization-introspection.sh](./scripts/provider-organization-introspection.sh): Introspect the resources in a provider organization
+- [provider-organization-introspect.sh](./scripts/provider-organization-introspect.sh): Introspect the resources in a provider organization
 - [provider-organization-member-create.sh](./scripts/provider-organization-member-create.sh): Add users to a provider organization
-- [catalog-introspection.sh](./scripts/catalog-introspection.sh): Introspect a catalog
+- [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect a catalog
 - [consumer-organization-create.sh](./scripts/consumer-organization-create.sh): Create a consumer organization
 - [consumer-organization-member-create.sh](./scripts/provider-organization-member-create.sh): Add users to a provider organization
 - [manage-catalog-properties.sh](./scripts/manage-catalog-properties.sh): Manage catalog properties
