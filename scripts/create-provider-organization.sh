@@ -62,6 +62,110 @@ echo ${response} | jq .
 
 
 
+echo Get the Provider Organization Settings
+response=`curl -X GET ${porg_url}/settings \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Gateway Services
+response=`curl -X GET ${porg_url}/gateway-services \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization TLS Client Profiles
+response=`curl -X GET ${porg_url}/tls-client-profiles \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization User Registries
+response=`curl -X GET ${porg_url}/user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization OAuth Providers
+response=`curl -X GET ${porg_url}/oauth-providers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Catalogs
+response=`curl -X GET ${porg_url}/catalogs \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog
+response=`curl -X GET ${porg_url}/catalogs/sandbox \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Settings
+response=`curl -X GET ${porg_url}/catalogs/sandbox/settings \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Properties
+response=`curl -X GET ${porg_url}/catalogs/sandbox/properties \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Configured User Registries
+response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-catalog-user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Configured Gatway Services
+response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-gateway-services \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Configured API User Registries
+response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-api-user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Sandbox Catalog Configured OAuth Providers
+response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-oauth-providers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
 echo Delete the Provider Organization
 response=`curl -X DELETE ${porg_url} \
                -s -k -H "Accept: application/json" \

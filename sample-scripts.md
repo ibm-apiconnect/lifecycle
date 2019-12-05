@@ -25,8 +25,10 @@ These scripts require *...more later...*
 
 ## Scripts
 
-- [catalog-settings.sh](./scripts/catalog-settings.sh): Sets the catalog setting *production* property to *true*
+- [introspect-admin-organization.sh](./scripts/introspect-admin-organization.sh): Introspect the configured resources in the admin organization
 - [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization
+
+- [catalog-settings.sh](./scripts/catalog-settings.sh): Sets the catalog setting *production* property to *true*
 - [cicd.sh](./scripts/cicd.sh): Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down
 - [replace.sh](./scripts/replace.sh): Replace an old version of a product with a new version in a production catalog
 - [supersede.sh](./scripts/replace.sh): Supersede an old version of a product with a new version in a production catalog
