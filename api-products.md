@@ -30,26 +30,33 @@ management.
 
 ## Creation
 
-You can create product and API definitions by using our graphical design
-tool named API Designer, our online API Manager, or via the command line.
+You can create product and API definitions by using our graphical
+design tool named API Designer, our online API Manager, or via the
+`apic` command line.
 
-Here is a simple boiler plate product definition referencing two
+Below is a simple boiler plate product definition referencing two
 OpenAPI definitions with a single plan all serialized into a YAML
-file:
+definition.  It can be created via the following `apic` command line:
+
+`apic create:product --title "Climbon" --apis "routes.yaml ascents.yaml"`
 
 ```
 product: '1.0.0'
 
 info:
   name: climbon
-  title: ClimbOn
+  title: Climbon
   version: 1.0.0
 
 apis:
   'routes':
     $ref: routes.yaml
-  'ascents':
-    $ref: ascents.yaml
+  'trails':
+    $ref: trails.yaml
+
+gateways:
+  - datapower-gateway
+
 
 visibility:
   view:
@@ -77,7 +84,7 @@ info section:
 ```
 info:
   name: climbon
-  title: ClimbOn
+  title: Climbon
   version: 1.0.0
   description: 'This is the description of my **really cool** API.'
   contact:
@@ -90,20 +97,20 @@ info:
   termsOfService: Here are the terms of service ...
 ```
 
-The identity of the product is the combination of the name and the
-version values in the info section (e.g. climbon:1.0.0).  The product
-version value is typically defaulted to 1.0.0 based on the [Semantic
-Versioning](http://semver.org) MAJOR.MINOR.PATCH syntax.
+The identity of the product is the combination of the *name* and the
+*version* values in the *info* section (e.g. climbon:1.0.0).  The
+product version value is typically defaulted to 1.0.0 based on the
+[Semantic Versioning](http://semver.org) MAJOR.MINOR.PATCH syntax.
 
 
 
 ## APIs
 
-The APIs section references the OpenAPI definitions composed by this
-product.  The name 'routes' and 'ascents' are local to the product
+The APIs section references the OpenAPI definitions packaged by this
+product.  The name *'routes'* and *'ascents'* are local to the product
 definition and can be used to discriminate API consumption details at
-the plan level.  In order to be published to an API Connect catalog,
-API products need to reference atleast one API.
+the plan level.  In order for a product to be published to an API
+Connect catalog, it must reference atleast one API definition.
 
 ```
 apis:
@@ -117,17 +124,18 @@ apis:
 
 ## Visibility
 
-By default published products are visible to the entire set of catalog
-consumers.  However, API Connect supports restricting the visibility
-to a subset of consumers.  The subset can be defined by listing
-individual consumers, or as a *group* of consumers.  A product's
-visibility can be defined in the product definition itself, defined
-when the product is published, or updated while the product is
+By default, published products are visible to the entire set of
+catalog consumers.  However, API Connect supports restricting the
+visibility to a subset of consumers.  The subset can be defined by
+listing individual consumers, or as a *group* of consumers.  A
+product's visibility can be defined in the product definition itself,
+defined when the product is published, or updated while the product is
 published.  Visibilty is a function of two finer grained capabilities.
-The first is the consumers who can see the product in the catalog, and
-the second is the consumers who can subscribe to the product.
+The first defines the set of consumers that can see the product in the
+catalog.  The second defines which set of consumers can subscribe to
+the product.
 
-When the API product is created it the visibility is defaulted as
+When the API product is created the visibility is defaulted as
 follows:
 
 ```
@@ -138,40 +146,42 @@ visibility:
     type: authenticated
 ```
 
-The view permission defines who can view the API product in the
-developer portal and the subscribe permission describes who can
+The *view* permission defines who can view the API product in the
+developer portal and the *subscribe* permission describes who can
 subscribe to the API product.  The default permissions enable all
 unauthenticated application developers to see the product but require
 developers to be authenticated to create a subscription.
 
-In addition to the public and authenticated values the visibility
+In addition to the *public* and *authenticated* values the visibility
 settings can be more fine grained.  Each permission can be customized
-for specific developer organizations or communities of developer
-organizations.  The developer organization and community names
-required to support finer grained permissions can be found in the
-catalog's developer page using the API Manager application.
+for specific consumer organizations or groups of consumer
+organizations.  The consumer organization and group names required to
+support finer grained permissions are configured in the API Manager's
+catalog settings.
 
 Below is an example of a product with restricted visibility.  Only
-four developer communities can view the product (listed in the tags
-section), and only the gold-partners community of developer
-organizations and the developer1 organization are allowed to subscribe
-to the product.
+four consumer grouops can view the product (listed in the tags section
+- although the full URL of the resource is required), and only the
+gold-partners group of consumer organizations and the three additionl
+consumer organizations are allowed to subscribe to the product.
 
 ```
 visibility:
   view:
     type: custom
-    tags:
-      - gold-partners
-      - silver-partners
-      - bronze-partners
-      - non-partners
+    group_urls:
+      - gold-partners-url-goes-here
+      - silver-partners-url-goes-here
+      - bronze-partners-url-goes-here
+      - non-partners-url-goes-here
   subscribe:
     type: custom
-    tags:
-      - gold-partners
-    orgs:
-      - developer1
+    group_urls:
+      - gold-partners-url-goes-here
+    org_urls:
+      - consumer-org1--url-goes-here
+      - consumer-org2--url-goes-here
+      - consumer-org3--url-goes-here
 ```
 
 
@@ -204,7 +214,7 @@ plans:
 ```
 
 Beyond the per plan approval and rate limiting capabilities, each plan
-also has an optional `apis` section that can be used to limit the APIs
+also has an optional *apis* section that can be used to limit the APIs
 provided by the plan to a subset of the APIs defined by the product
 and/or provide more fine grained operation level rate limiting.
 
