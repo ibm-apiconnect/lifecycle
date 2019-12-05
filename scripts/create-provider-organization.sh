@@ -110,6 +110,14 @@ echo ${response} | jq .
 
 
 
+echo Get the Provider Organization Member Invitations
+response=`curl -X GET ${porg_url}/member-invitations \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
 echo Get the Provider Organization Sandbox Catalog
 response=`curl -X GET ${porg_url}/catalogs/sandbox \
                -s -k -H "Accept: application/json" \

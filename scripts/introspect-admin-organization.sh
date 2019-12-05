@@ -67,6 +67,22 @@ echo ${response} | jq .
 
 
 
+echo Get the Admin Organization TLS Client Profiles
+response=`curl -X GET https://${management}/api/orgs/admin/tls-client-profiles \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization User Registries
+response=`curl -X GET https://${management}/api/orgs/admin/user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
 echo Get the Admin Organization OAuth Providers
 response=`curl -X GET https://${management}/api/orgs/admin/oauth-providers \
                -s -k -H "Accept: application/json" \
