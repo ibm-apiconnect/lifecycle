@@ -19,30 +19,6 @@ export token=`echo ${response} | jq -r '.access_token'`
 
 
 
-echo Get the Cloud Scoped Settings
-response=`curl -X GET https://${management}/api/cloud/settings \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Cloud Scoped Integrations
-response=`curl -X GET https://${management}/api/cloud/integrations \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Cloud Scoped Provider Organization Invitations
-response=`curl -X GET https://${management}/api/cloud/org-invitations \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
 echo Get the Admin Organization
 response=`curl -X GET https://${management}/api/orgs/admin \
                -s -k -H "Accept: application/json" \

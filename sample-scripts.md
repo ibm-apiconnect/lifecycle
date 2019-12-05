@@ -25,9 +25,11 @@ These scripts require *...more later...*
 
 ## Scripts
 
-- [introspect-admin-organization.sh](./scripts/introspect-admin-organization.sh): Introspect the configured resources in the admin organization
+- [introspect-cloud-scope.sh](./scripts/introspect-cloud-scope.sh): Introspect the cloud scoped resources
+- [introspect-admin-organization.sh](./scripts/introspect-admin-organization.sh): Introspect the resources in the admin organization
 - [create-provider-organization.sh](./scripts/create-provider-organization.sh): Creates a provider organization owner and a provider organization
 - [provision-organization-members.sh](./scripts/provision-organization-members.sh): Creates a provider organization owner and a provider organization
+- [manage-catalog-properties.sh](./scripts/manage-catalog-properties.sh): Manage catalog properties
 
 - [catalog-settings.sh](./scripts/catalog-settings.sh): Sets the catalog setting *production* property to *true*
 - [cicd.sh](./scripts/cicd.sh): Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down

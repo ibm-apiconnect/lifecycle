@@ -12,5 +12,5 @@ export provider_email=steve@acme.com
 export provider_firstname=steve
 export provider_lastname=owner
 
-export porg_name=acme
-export porg_title=acme
+export porg=acme
+export porg_title=Acme Provider Organization
