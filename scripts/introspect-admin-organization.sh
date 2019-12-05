@@ -35,6 +35,86 @@ echo ${response} | jq .
 
 
 
+echo Get the Provider Organization Notification Templates
+response=`curl -X GET ${porg_url}/settings/notification-templates \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Notification Templates Admin
+response=`curl -X GET ${porg_url}/settings/notification-templates/admin \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization User Registries
+response=`curl -X GET https://${management}/api/orgs/admin/user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Associates
+response=`curl -X GET ${porg_url}/associates \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization Member Invitations
+response=`curl -X GET https://${management}/api/orgs/admin/member-invitations \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Members
+response=`curl -X GET ${porg_url}/members \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Roles
+response=`curl -X GET ${porg_url}/roles \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization Availability Zones
+response=`curl -X GET https://${management}/api/orgs/admin/availability-zones \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization OAuth Providers
+response=`curl -X GET https://${management}/api/orgs/admin/oauth-providers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Admin Organization Mail Servers
+response=`curl -X GET https://${management}/api/orgs/admin/mail-servers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
 echo Get the Admin Organization TLS Server Profiles
 response=`curl -X GET https://${management}/api/orgs/admin/tls-server-profiles \
                -s -k -H "Accept: application/json" \
@@ -51,32 +131,16 @@ echo ${response} | jq .
 
 
 
-echo Get the Admin Organization User Registries
-response=`curl -X GET https://${management}/api/orgs/admin/user-registries \
+echo Get the Provider Organization Keystores
+response=`curl -X GET ${porg_url}/keystores \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Admin Organization OAuth Providers
-response=`curl -X GET https://${management}/api/orgs/admin/oauth-providers \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Admin Organization Availability Zones
-response=`curl -X GET https://${management}/api/orgs/admin/availability-zones \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Admin Organization Member Invitations
-response=`curl -X GET https://${management}/api/orgs/admin/member-invitations \
+echo Get the Provider Organization Truststores
+response=`curl -X GET ${porg_url}/truststores \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .

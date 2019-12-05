@@ -27,6 +27,69 @@ echo ${response} | jq .
 
 
 
+echo Get the Cloud Scoped Provider Organization Invitations
+response=`curl -X GET https://${management}/api/cloud/org-invitations \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+echo Get the Cloud Scoped Admin Identity Providers
+response=`curl -X GET https://${management}/api/cloud/admin/identity-providers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped Admin Provider Providers
+response=`curl -X GET https://${management}/api/cloud/provider/identity-providers \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped Topology
+response=`curl -X GET https://${management}/api/cloud/topology \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped Mail Server Configured
+response=`curl -X GET https://${management}/api/cloud/settings/mail-server-configured \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped User Registry Setting
+response=`curl -X GET https://${management}/api/cloud/settings/user-registries \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped Notification Templates
+response=`curl -X GET https://${management}/api/cloud/settings/notification-templates \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Cloud Scoped Settings Role Defaults
+response=`curl -X GET https://${management}/api/cloud/settings/role-defaults \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
 echo Get the Cloud Scoped Integrations
 response=`curl -X GET https://${management}/api/cloud/integrations \
                -s -k -H "Accept: application/json" \
@@ -35,8 +98,8 @@ echo ${response} | jq .
 
 
 
-echo Get the Cloud Scoped Provider Organization Invitations
-response=`curl -X GET https://${management}/api/cloud/org-invitations \
+echo Get the Cloud Scoped Registrations
+response=`curl -X GET https://${management}/api/cloud/registrations \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .

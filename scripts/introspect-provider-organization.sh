@@ -36,16 +36,40 @@ echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Gateway Services
-response=`curl -X GET ${porg_url}/gateway-services \
+echo Get the Provider Organization Notification Templates
+response=`curl -X GET ${porg_url}/settings/notification-templates \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization TLS Client Profiles
-response=`curl -X GET ${porg_url}/tls-client-profiles \
+echo Get the Provider Organization Notification Templates Provider
+response=`curl -X GET ${porg_url}/settings/notification-templates/provider \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Notification Templates Catalog
+response=`curl -X GET ${porg_url}/settings/notification-templates/catalog \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Notification Templates Space
+response=`curl -X GET ${porg_url}/settings/notification-templates/space \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Notification Templates Consumer
+response=`curl -X GET ${porg_url}/settings/notification-templates/consumer \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
@@ -60,16 +84,8 @@ echo ${response} | jq .
 
 
 
-echo Get the Provider Organization OAuth Providers
-response=`curl -X GET ${porg_url}/oauth-providers \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo Get the Provider Organization Catalogs
-response=`curl -X GET ${porg_url}/catalogs \
+echo Get the Provider Organization Associates
+response=`curl -X GET ${porg_url}/associates \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
@@ -84,56 +100,112 @@ echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog
-response=`curl -X GET ${porg_url}/catalogs/sandbox \
+echo Get the Provider Organization Members
+response=`curl -X GET ${porg_url}/members \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Settings
-response=`curl -X GET ${porg_url}/catalogs/sandbox/settings \
+echo Get the Provider Organization Roles
+response=`curl -X GET ${porg_url}/roles \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Properties
-response=`curl -X GET ${porg_url}/catalogs/sandbox/properties \
+echo Get the Provider Organization Gateway Services
+response=`curl -X GET ${porg_url}/gateway-services \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured User Registries
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-catalog-user-registries \
+echo Get the Provider Organization Portal Services
+response=`curl -X GET ${porg_url}/portal-services \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured Gatway Services
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-gateway-services \
+echo Get the Provider Organization OAuth Providers
+response=`curl -X GET ${porg_url}/oauth-providers \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured API User Registries
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-api-user-registries \
+echo Get the Provider Organization Billings
+response=`curl -X GET ${porg_url}/billings \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured OAuth Providers
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-oauth-providers \
+echo Get the Provider Organization TLS Client Profiles
+response=`curl -X GET ${porg_url}/tls-client-profiles \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Keystores
+response=`curl -X GET ${porg_url}/keystores \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Truststores
+response=`curl -X GET ${porg_url}/truststores \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Catalogs
+response=`curl -X GET ${porg_url}/catalogs \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Catalog Invitations
+response=`curl -X GET ${porg_url}/catalog-invitations \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Drafts
+response=`curl -X GET ${porg_url}/drafts \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Draft Products
+response=`curl -X GET ${porg_url}/draft-products \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo Get the Provider Organization Draft APIs
+response=`curl -X GET ${porg_url}/draft-apis \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
