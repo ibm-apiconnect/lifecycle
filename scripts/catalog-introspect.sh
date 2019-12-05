@@ -1,10 +1,17 @@
 #!/bin/bash
 
 # Functions/aliases/base environment variables
-source ./env.sh
+source ./.env
 
 
 
+# Define the catalog to introspect, catalog by default
+export porg=${prog:-acme}
+export catalog=${catalog:-sandbox}
+
+
+
+echo
 echo Authenticate as the provider organization owner
 response=`curl -X POST https://${management}/api/token \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
@@ -19,56 +26,73 @@ export token=`echo ${response} | jq -r '.access_token'`
 
 
 
-echo Get the Provider Organization Sandbox Catalog
-response=`curl -X GET ${porg_url}/catalogs/sandbox \
+echo
+echo Get the Provider Organization
+response=`curl -X GET $https://${management}/api/orgs/${porg} \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+export porg_url=`echo ${response} | jq -r '.url'`
+
+
+
+echo
+echo Get the Catalog
+response=`curl -X GET ${porg_url}/catalogs/${catalog} \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Settings
-response=`curl -X GET ${porg_url}/catalogs/sandbox/settings \
+echo
+echo Get the Catalog Settings
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/settings \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Properties
-response=`curl -X GET ${porg_url}/catalogs/sandbox/properties \
+echo
+echo Get the Catalog Properties
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/properties \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured User Registries
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-catalog-user-registries \
+echo
+echo Get the Catalog Configured User Registries
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/configured-catalog-user-registries \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured Gatway Services
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-gateway-services \
+echo
+echo Get the Catalog Configured Gatway Services
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/configured-gateway-services \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured API User Registries
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-api-user-registries \
+echo
+echo Get the Catalog Configured API User Registries
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/configured-api-user-registries \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .
 
 
 
-echo Get the Provider Organization Sandbox Catalog Configured OAuth Providers
-response=`curl -X GET ${porg_url}/catalogs/sandbox/configured-oauth-providers \
+echo
+echo Get the Catalog Configured OAuth Providers
+response=`curl -X GET ${porg_url}/catalogs/${catalog}/configured-oauth-providers \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .

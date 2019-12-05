@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export management=api.admin-201841-1202.loki.dev.ciondemand.com
 
 export admin_idp=admin/default-idp-1

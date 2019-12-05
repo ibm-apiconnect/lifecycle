@@ -30,8 +30,10 @@ These scripts require *...more later...*
 *Scope Management*:
 - [cloud-scope-introspect.sh](./scripts/cloud-scope-introspect.sh): Introspect the cloud scoped resources
 - [admin-organization-introspect.sh](./scripts/admin-organization-introspect.sh): Introspect the resources in the admin organization
-- [provider-organization-create.sh](./scripts/provider-organization-create.sh): Create a provider organization
+- [provider-organization-create.sh](./scripts/provider-organization-create.sh): Create a provider owner and organization
+- [provider-organization-create-delete.sh](./scripts/provider-organization-create-delete.sh): Create and delete a provider owner and organization
 - [provider-organization-introspect.sh](./scripts/provider-organization-introspect.sh): Introspect the resources in a provider organization
+
 - [provider-organization-member-create.sh](./scripts/provider-organization-member-create.sh): Add users to a provider organization
 - [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect a catalog
 - [consumer-organization-create.sh](./scripts/consumer-organization-create.sh): Create a consumer organization

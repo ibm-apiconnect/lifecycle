@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Functions/aliases/base environment variables
-source ./env.sh
+. ./.env
 
 
 # Set the porg to the name of the provider organization to introspect

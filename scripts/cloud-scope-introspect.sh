@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # Functions/aliases/base environment variables
-source ./env.sh
+. ./.env
+
+
+
+# Define/customize
+export management=${management:-some-management-host}
+export admin_idp=${admin_idp:-admin/default-idp-1}
+export admin_password=${admin_password:-some-password}
 
 
 

@@ -5,16 +5,21 @@
 . ./.env
 
 
+
 # Define/customize
+# - username/email/prog are purposefully different then the defaults
+#   since this script creates and deletes the provider
+#   owner/organization thus the owner/organization are unique so they
+#   are not by other scripts
 export management=${management:-some-management-host}
 export admin_idp=${admin_idp:-admin/default-idp-1}
 export admin_password=${admin_password:-some-password}
 export provider_user_registry=${provider_user_registry:-api-manager-lur}
-export provider_username=${provider_username:-steve}
-export provider_email=${provider_email:-steve@acme.com}
+export provider_username=steve-dynamic
+export provider_email=steve-dynamic@acme.com
 export provider_firstname=${provider_firstname:-Steve}
 export provider_lastname=${provider_lastname:-Owner}
-export porg=${porg:-acme}
+export porg=acme-dynamic
 export porg_title=${porg_title:-Acme Provider Organization}
 
 
@@ -60,3 +65,21 @@ response=`curl https://${management}/api/cloud/orgs \
                      \"owner_url\": \"${owner_url}\" }"`
 echo ${response} | jq .
 export porg_url=`echo ${response} | jq -r '.url'`
+
+
+
+echo
+echo Delete the Provider Organization
+response=`curl -X DELETE ${porg_url} \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo
+echo Delete the Provider Organization Owner
+response=`curl -X DELETE ${owner_url} \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
