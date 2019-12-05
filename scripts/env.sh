@@ -7,7 +7,7 @@ export provider_user_registry=api-manager-lur
 export provider_idp=provider/default-idp-2
 
 export provider_username=steve
-export provider_password=${provider-password:-8iron-hide}
+export provider_password=${provider_password:-8iron-hide}
 export provider_email=steve@acme.com
 export provider_firstname=steve
 export provider_lastname=owner
