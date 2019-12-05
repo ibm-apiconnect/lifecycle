@@ -34,7 +34,7 @@ cardinaity is dependent on corporate organization and compliance
 criteria that are outside the scope of this article.
 
 API Connect supports a boolean catalog configuration property named
-`production` that has a critical impact on the behavior of the
+`production-mode` that has a critical impact on the behavior of the
 catalog.  **For staging and production catalogs we recommend setting
 this property `true`.** The `true` value results in behavior that
 requires new API products being published to the catalog to have a
