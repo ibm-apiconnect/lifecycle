@@ -1,3 +1,5 @@
+*NOTE: This reposistory is a work in progress.*
+
 This repository contains the following articles and scripts that can
 be used for CICD automation tasks:
 
@@ -12,8 +14,6 @@ be used for CICD automation tasks:
 
 
 ## Sample Scripts
-
-*NOTE: These are currently a work in progress*
 
 *Scope Management*:
 - [cloud-introspect.sh](./scripts/cloud-introspect.sh): Introspect the cloud scoped resources
