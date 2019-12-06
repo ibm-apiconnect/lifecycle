@@ -38,7 +38,7 @@ echo
 echo Get the Provider Organization
 response=`curl -X GET https://${management}/api/orgs/${porg} \
                -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${provider_token}"`
+               -H "Authorization: Bearer ${admin_token}"`
 echo ${response} | jq .
 export porg_url=`echo ${response} | jq -r '.url'`
 export owner_url=`echo ${response} | jq -r '.owner_url'`
