@@ -20,19 +20,13 @@ be used for CICD automation tasks:
 - [admin-introspect.sh](./scripts/admin-introspect.sh): Introspect the resources in the admin organization
 - [porg-create-delete.sh](./scripts/porg-create-delete.sh): Create and delete a provider owner and organization
 - [porg-create.sh](./scripts/porg-create.sh): Create a provider owner and organization
-
-- [porg-introspect.sh](./scripts/porg-introspect.sh): Introspect the resources in a provider organization
-- [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect a catalog
-- [space-introspect.sh](./scripts/space-introspect.sh): Introspect a space
-
+- [porg-introspect.sh](./scripts/porg-introspect.sh): Introspect the provider organization REST resources
+- [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect the catalog REST resources
+- [space-introspect.sh](./scripts/space-introspect.sh): Introspect the space REST resources
 - [porg-delete.sh](./scripts/porg-delete.sh): Delete a provider owner and organization
-
 - [porg-production-create-delete.sh](./scripts/porg-production-create-delete.sh): Create and delete a production provider owner and organization, catalogs, and spaces
 - [porg-production-create.sh](./scripts/porg-production-create.sh): Create a production provider owner and organization, catalogs, and spaces
 - [porg-production-delete.sh](./scripts/porg-production-delete.sh): Delete a production provider owner and organization
-
-
-
 - porg-member-create.sh: Add users to a provider organization
 - consumer-organization-create.sh: Create a consumer organization
 - consumer-organization-member-create.sh: Add users to a provider organization

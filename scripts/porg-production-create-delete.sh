@@ -33,11 +33,11 @@ export porg_title=${porg_title}
 export catalog=${catalog}
 export catalog_title=${catalog_title}
 export space1=travel
-export space1_title=Travel Space
+export space1_title="Travel Space"
 export space2=finance
-export space2_title=Finance Space
+export space2_title="Finance Space"
 export space3=inventory
-export space3_title=Inventory Space
+export space3_title="Inventory Space"
 
 
 
@@ -117,7 +117,8 @@ echo Update the Prod Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"spaces_enabled\": true }"`
+               -d "{ \"production_mode\": true,
+                     \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
 
@@ -175,7 +176,8 @@ echo Update the Staging Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"spaces_enabled\": true }"`
+               -d "{ \"production_mode\": true,
+                     \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
 

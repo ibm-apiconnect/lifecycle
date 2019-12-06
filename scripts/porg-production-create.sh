@@ -72,6 +72,21 @@ export owner_url=`echo ${response} | jq -r '.url'`
 
 
 echo
+echo Authenticate as the Provider Organization Owner
+response=`curl -X POST https://${management}/api/token \
+               -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
+               -d "{ \"realm\": \"${provider_idp}\",
+                     \"username\": \"${provider_username}\",
+                     \"password\": \"${provider_password}\",
+                     \"client_id\": \"599b7aef-8841-4ee2-88a0-84d49c4d6ff2\",
+                     \"client_secret\": \"0ea28423-e73b-47d4-b40e-ddb45c48bb0c\",
+                     \"grant_type\": \"password\" }"`
+echo ${response} | jq .
+export provider_token=`echo ${response} | jq -r '.access_token'`
+
+
+
+echo
 echo Create the Provider Organization
 response=`curl https://${management}/api/cloud/orgs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
@@ -82,6 +97,7 @@ response=`curl https://${management}/api/cloud/orgs \
                      \"owner_url\": \"${owner_url}\" }"`
 echo ${response} | jq .
 export porg_url=`echo ${response} | jq -r '.url'`
+
 
 
 echo
@@ -101,7 +117,8 @@ echo Update the Prod Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"spaces_enabled\": true }"`
+               -d "{ \"production_mode\": true,
+                     \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
 
@@ -147,8 +164,8 @@ echo Create the Staging Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${catalog}\",
-                     \"title\": \"${catalog_title}\" }"`
+               -d "{ \"name\": \"staging\",
+                     \"title\": \"Staging Catalog\" }"`
 echo ${response} | jq .
 export catalog_url=`echo ${response} | jq -r '.url'`
 
@@ -159,7 +176,8 @@ echo Update the Staging Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"spaces_enabled\": true }"`
+               -d "{ \"production_mode\": true,
+                     \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
 
