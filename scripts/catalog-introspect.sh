@@ -1,17 +1,22 @@
 #!/bin/bash
 
-# Functions/aliases/base environment variables
+# Source default environment variables
 source ./.env
 
 
 
-# Define/customize
-export management=${management:-some-management-host}
+# Overview
+# - Introspect a catalog
+
+
+
+# Environment variables specific to this script
+export management=${management}
 export provider_idp=provider/default-idp-2
-export provider_username=${provider_username:-steve}
-export provider_password=${provider_password:-some-password}
-export porg=${porg:-acme}
-export catalog=${catalog:-sandbox}
+export provider_username=${provider_username}
+export provider_password=${provider_password}
+export porg=${porg}
+export catalog=${catalog}
 
 
 
@@ -86,6 +91,24 @@ echo ${response}
 
 
 echo
+echo Get the Catalog Role Defaults
+response=`curl -X GET ${catalog_url}/role-defaults \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo
+echo Get the Catalog Role Defaults Consumer
+response=`curl -X GET ${catalog_url}/role-defaults/consumer \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${token}"`
+echo ${response} | jq .
+
+
+
+echo
 echo Get the Catalog Roles
 response=`curl -X GET ${catalog_url}/roles \
                -s -k -H "Accept: application/json" \
@@ -115,24 +138,6 @@ echo ${response} | jq .
 echo
 echo Get the Catalog Tasks
 response=`curl -X GET ${catalog_url}/tasks \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo
-echo Get the Catalog Role Defaults
-response=`curl -X GET ${catalog_url}/role-defaults \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${token}"`
-echo ${response} | jq .
-
-
-
-echo
-echo Get the Catalog Role Defaults Consumer
-response=`curl -X GET ${catalog_url}/role-defaults/consumer \
                -s -k -H "Accept: application/json" \
                -H "Authorization: Bearer ${token}"`
 echo ${response} | jq .

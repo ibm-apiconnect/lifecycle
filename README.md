@@ -16,15 +16,24 @@ be used for CICD automation tasks:
 *NOTE: These are currently a work in progress*
 
 *Scope Management*:
-- [cloud-scope-introspect.sh](./scripts/cloud-scope-introspect.sh): Introspect the cloud scoped resources
-- [admin-organization-introspect.sh](./scripts/admin-organization-introspect.sh): Introspect the resources in the admin organization
-- [provider-organization-create.sh](./scripts/provider-organization-create.sh): Create a provider owner and organization
-- [provider-organization-create-delete.sh](./scripts/provider-organization-create-delete.sh): Create and delete a provider owner and organization
-- [provider-organization-introspect.sh](./scripts/provider-organization-introspect.sh): Introspect the resources in a provider organization
+- [cloud-introspect.sh](./scripts/cloud-introspect.sh): Introspect the cloud scoped resources
+- [admin-introspect.sh](./scripts/admin-introspect.sh): Introspect the resources in the admin organization
+- [porg-create-delete.sh](./scripts/porg-create-delete.sh): Create and delete a provider owner and organization
+- [porg-create.sh](./scripts/porg-create.sh): Create a provider owner and organization
+
+- [porg-introspect.sh](./scripts/porg-introspect.sh): Introspect the resources in a provider organization
 - [catalog-introspect.sh](./scripts/catalog-introspect.sh): Introspect a catalog
 - [space-introspect.sh](./scripts/space-introspect.sh): Introspect a space
-- [production-provider-organization-catalog-spaces.sh](./scripts/production-provider-organization-catalog-spaces.sh): Create a product provider, catalog, and spaces
-- provider-organization-member-create.sh: Add users to a provider organization
+
+- [porg-delete.sh](./scripts/porg-delete.sh): Delete a provider owner and organization
+
+- [porg-production-create-delete.sh](./scripts/porg-production-create-delete.sh): Create and delete a production provider owner and organization, catalogs, and spaces
+- [porg-production-create.sh](./scripts/porg-production-create.sh): Create a production provider owner and organization, catalogs, and spaces
+- [porg-production-delete.sh](./scripts/porg-production-delete.sh): Delete a production provider owner and organization
+
+
+
+- porg-member-create.sh: Add users to a provider organization
 - consumer-organization-create.sh: Create a consumer organization
 - consumer-organization-member-create.sh: Add users to a provider organization
 - manage-catalog-properties.sh: Manage catalog properties
