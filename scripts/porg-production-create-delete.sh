@@ -96,7 +96,7 @@ response=`curl -X POST https://${management}/api/token \
                      \"client_secret\": \"0ea28423-e73b-47d4-b40e-ddb45c48bb0c\",
                      \"grant_type\": \"password\" }"`
 echo ${response} | jq .
-export production_token=`echo ${response} | jq -r '.access_token'`
+export provider_token=`echo ${response} | jq -r '.access_token'`
 
 
 
@@ -104,7 +104,7 @@ echo
 echo Create the Prod Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${catalog}\",
                      \"title\": \"${catalog_title}\" }"`
 echo ${response} | jq .
@@ -116,7 +116,7 @@ echo
 echo Update the Prod Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
@@ -126,7 +126,7 @@ echo
 echo Create the Prod Catalog Travel Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space1}\",
                      \"title\": \"${space1_title}\" }"`
 echo ${response} | jq .
@@ -138,7 +138,7 @@ echo
 echo Create the Prod Catalog Finance Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space2}\",
                      \"title\": \"${space2_title}\" }"`
 echo ${response} | jq .
@@ -150,7 +150,7 @@ echo
 echo Create the Prod Catalog Inventory Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space3}\",
                      \"title\": \"${space3_title}\" }"`
 echo ${response} | jq .
@@ -162,7 +162,7 @@ echo
 echo Create the Staging Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"staging\",
                      \"title\": \"Staging Catalog\" }"`
 echo ${response} | jq .
@@ -174,7 +174,7 @@ echo
 echo Update the Staging Catalog Settings
 response=`curl -X PUT ${catalog_url}/settings \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"spaces_enabled\": true }"`
 echo ${response} | jq .
 
@@ -184,7 +184,7 @@ echo
 echo Create the Staging Catalog Travel Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space1}\",
                      \"title\": \"${space1_title}\" }"`
 echo ${response} | jq .
@@ -196,7 +196,7 @@ echo
 echo Create the Staging Catalog Finance Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space2}\",
                      \"title\": \"${space2_title}\" }"`
 echo ${response} | jq .
@@ -208,7 +208,7 @@ echo
 echo Create the Staging Catalog Inventory Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
-               -H "Authorization: Bearer ${production_token}" \
+               -H "Authorization: Bearer ${provider_token}" \
                -d "{ \"name\": \"${space3}\",
                      \"title\": \"${space3_title}\" }"`
 echo ${response} | jq .
