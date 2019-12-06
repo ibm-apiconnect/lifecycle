@@ -6,16 +6,16 @@
 
 
 # Overview
-- Create User: ${provider_user_registry}/steve-production
-- Create Porg: acme-production
-- Create Catalog: acme-production/staging
-- Create Space: acme-production/staging/travel
-- Create Space: acme-production/staging/finance
-- Create Space: acme-production/staging/inventory
-- Create Catalog: acme-production/prod
-- Create Space: acme-production/prod/travel
-- Create Space: acme-production/prod/finance
-- Create Space: acme-production/prod/inventory
+# - Create User: ${provider_user_registry}/steve-production
+# - Create Porg: acme-production
+# - Create Catalog: acme-production/staging
+# - Create Space: acme-production/staging/travel
+# - Create Space: acme-production/staging/finance
+# - Create Space: acme-production/staging/inventory
+# - Create Catalog: acme-production/prod
+# - Create Space: acme-production/prod/travel
+# - Create Space: acme-production/prod/finance
+# - Create Space: acme-production/prod/inventory
 
 
 

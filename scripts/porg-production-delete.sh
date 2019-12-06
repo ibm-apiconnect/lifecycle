@@ -6,8 +6,8 @@
 
 
 # Overview
-- Delete User: ${provider_user_registry}/steve-production
-- Delete Porg: acme-production
+# - Delete User: ${provider_user_registry}/steve-production
+# - Delete Porg: acme-production
 
 
 

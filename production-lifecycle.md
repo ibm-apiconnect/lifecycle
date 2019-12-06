@@ -3,8 +3,6 @@
 Authors:
 - [Shane Claussen](mailto:claussen@us.ibm.com), Distinguished Engineer & Chief Architect, API Connect
 - [Sumanto Biswas](mailto:biswas@us.ibm.com), Development Lead, API Connect
-- [Pramodh Ramesh](mailto:vr.pramodh@ibm.com), Offering Management Lead
-- [Anh Le](a.le@ibm.com), Developer
 
 
 

@@ -8,8 +8,8 @@
 # Overview
 # - Create/Delete User: ${provider_user_registry}/steve-dynamic
 # - Create/Delete Porg: acme-dynamic
-# - Create/Delete Catalog: acme/prod
-# - Create/Delete Space: acme/prod/travel
+# - Create/Delete Catalog: acme-dynamic/prod
+# - Create/Delete Space: acme-dynamic/prod/travel
 
 
 
@@ -75,7 +75,7 @@ export porg_url=`echo ${response} | jq -r '.url'`
 
 
 echo
-echo Authenticate as the provider organization owner user
+echo Authenticate as the Provider Organization Owner
 response=`curl -X POST https://${management}/api/token \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -d "{ \"realm\": \"${provider_idp}\",

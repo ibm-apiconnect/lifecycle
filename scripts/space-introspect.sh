@@ -22,7 +22,7 @@ export space=${space}
 
 
 echo
-echo Authenticate as the provider organization owner
+echo Authenticate as the Provider Organization Owner
 response=`curl -X POST https://${management}/api/token \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -d "{ \"realm\": \"${provider_idp}\",
