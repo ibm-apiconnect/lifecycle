@@ -133,4 +133,30 @@ export provider_token=`echo ${response} | jq -r '.access_token'`
 
 
 echo
+echo Get Routes API URL to invoke
+response=`curl -X GET XXXX \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${provider_token}"
+echo ${response} | jq .
+export provider_token=`echo ${response} | jq -r '.access_token'`
+
+
+
+echo
+echo Get Trails API URL to invoke
+response=`curl -X GET XXXX \
+               -s -k -H "Accept: application/json" \
+               -H "Authorization: Bearer ${provider_token}"
+echo ${response} | jq .
+export provider_token=`echo ${response} | jq -r '.access_token'`
+
+
+
+echo
 echo Execute tests using the Subscription Credentials
+
+
+
+echo
+echo Delete the Catalog
+response=`curl -X DELETE XXXX`
