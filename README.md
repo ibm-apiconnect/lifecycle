@@ -26,14 +26,9 @@ be used for CICD automation tasks:
 - [porg-delete.sh](./scripts/porg-delete.sh): Delete a provider owner and organization
 - [porg-production-create-delete.sh](./scripts/porg-production-create-delete.sh): Create and delete a production provider owner and organization, catalogs, and spaces
 - [porg-production-create.sh](./scripts/porg-production-create.sh): Create a production provider owner and organization, catalogs, and spaces
-- [porg-production-delete.sh](./scripts/porg-production-delete.sh): Delete a production provider owner and organization
-- porg-member-create.sh: Add users to a provider organization
-- consumer-organization-create.sh: Create a consumer organization
-- consumer-organization-member-create.sh: Add users to a provider organization
-- manage-catalog-properties.sh: Manage catalog properties
 
 *Development API Lifecycle*:
-- development-cicd.sh: Create an isolated catalog for testing, publish a product, create a consumer org/app, subscribe, test invocations, and tear down
+- [development-publish-test.sh](./scripts/development-publish-test.sh): Development/design time publish and test an API
 
 *Production API Lifecycle*:
 - production-replace.sh: Replace an old version of a product with a new version in a production catalog

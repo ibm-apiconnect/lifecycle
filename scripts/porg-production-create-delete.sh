@@ -30,14 +30,16 @@ export provider_firstname=${provider_firstname}
 export provider_lastname=${provider_lastname}
 export porg=acme-production-dynamic
 export porg_title=${porg_title}
-export catalog=${catalog}
-export catalog_title=${catalog_title}
-export space1=travel
-export space1_title="Travel Space"
-export space2=finance
-export space2_title="Finance Space"
-export space3=inventory
-export space3_title="Inventory Space"
+export catalog_staging=${catalog_staging}
+export catalog_staging_title=${catalog_staging_title}
+export catalog_prod=${catalog_prod}
+export catalog_prod_title=${catalog_prod_title}
+export space_travel=travel
+export space_travel_title="Travel Space"
+export space_finance=finance
+export space_finance_title="Finance Space"
+export space_inventory=inventory
+export space_inventory_title="Inventory Space"
 
 
 
@@ -105,8 +107,8 @@ echo Create the Prod Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${catalog}\",
-                     \"title\": \"${catalog_title}\" }"`
+               -d "{ \"name\": \"${catalog_prod}\",
+                     \"title\": \"${catalog_prod_title}\" }"`
 echo ${response} | jq .
 export catalog_url=`echo ${response} | jq -r '.url'`
 
@@ -128,8 +130,8 @@ echo Create the Prod Catalog Travel Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space1}\",
-                     \"title\": \"${space1_title}\" }"`
+               -d "{ \"name\": \"${space_travel}\",
+                     \"title\": \"${space_travel_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 
@@ -140,8 +142,8 @@ echo Create the Prod Catalog Finance Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space2}\",
-                     \"title\": \"${space2_title}\" }"`
+               -d "{ \"name\": \"${space_finance}\",
+                     \"title\": \"${space_finance_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 
@@ -152,8 +154,8 @@ echo Create the Prod Catalog Inventory Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space3}\",
-                     \"title\": \"${space3_title}\" }"`
+               -d "{ \"name\": \"${space_inventory}\",
+                     \"title\": \"${space_inventory_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 
@@ -164,8 +166,8 @@ echo Create the Staging Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"staging\",
-                     \"title\": \"Staging Catalog\" }"`
+               -d "{ \"name\": \"${catalog_staging}\",
+                     \"title\": \"${catalog_staging_title}\" }"`
 echo ${response} | jq .
 export catalog_url=`echo ${response} | jq -r '.url'`
 
@@ -187,8 +189,8 @@ echo Create the Staging Catalog Travel Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space1}\",
-                     \"title\": \"${space1_title}\" }"`
+               -d "{ \"name\": \"${space_travel}\",
+                     \"title\": \"${space_travel_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 
@@ -199,8 +201,8 @@ echo Create the Staging Catalog Finance Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space2}\",
-                     \"title\": \"${space2_title}\" }"`
+               -d "{ \"name\": \"${space_finance}\",
+                     \"title\": \"${space_finance_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 
@@ -211,8 +213,8 @@ echo Create the Staging Catalog Inventory Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space3}\",
-                     \"title\": \"${space3_title}\" }"`
+               -d "{ \"name\": \"${space_inventory}\",
+                     \"title\": \"${space_inventory_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
 

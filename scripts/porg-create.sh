@@ -24,10 +24,10 @@ export provider_firstname=${provider_firstname}
 export provider_lastname=${provider_lastname}
 export porg=${porg}
 export porg_title=${porg_title}
-export catalog=${catalog}
-export catalog_title=${catalog_title}
-export space=${space}
-export space_title=${space_title}
+export catalog_prod=${catalog}
+export catalog_prod_title=${catalog_prod_title}
+export space_travel=${space_travel}
+export space_travel_title=${space_travel_title}
 
 
 
@@ -95,8 +95,8 @@ echo Create the Prod Catalog
 response=`curl -X POST ${porg_url}/catalogs \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${catalog}\",
-                     \"title\": \"${catalog_title}\" }"`
+               -d "{ \"name\": \"${catalog_prod}\",
+                     \"title\": \"${catalog_prod_title}\" }"`
 echo ${response} | jq .
 export catalog_url=`echo ${response} | jq -r '.url'`
 
@@ -117,7 +117,7 @@ echo Create the Prod Catalog Travel Space
 response=`curl -X POST ${catalog_url}/spaces \
                -s -k -H "Content-Type: application/json" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -d "{ \"name\": \"${space}\",
-                     \"title\": \"${space_title}\" }"`
+               -d "{ \"name\": \"${space_travel}\",
+                     \"title\": \"${space_travel_title}\" }"`
 echo ${response} | jq .
 export space_url=`echo ${response} | jq -r '.url'`
