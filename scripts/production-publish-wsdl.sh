@@ -57,6 +57,6 @@ response=`curl -X POST ${management}/api/spaces/${porg}/${catalog_space}/${space
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
                -F "product=@math100-product.yaml" \
-               -F "openapi=@calculator-api.yaml"
+               -F "openapi=@calculator-api.yaml"`
 echo ${response} | jq .
 export provider_token=`echo ${response} | jq -r '.access_token'`
