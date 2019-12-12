@@ -28,8 +28,8 @@ be used for CICD automation tasks:
 - [porg-production-create.sh](./scripts/porg-production-create.sh): Create a production provider owner and organization, catalogs, and spaces
 
 *API Lifecycle*:
-- [production-publish.sh](./scripts/publish-publish.sh): Publish a product referencing APIs to a space
-- [production-publish-wsdl.sh](./scripts/publish-publish-wsdl.sh): Publish a product referencing an API proxy generated from a WSDL to a space
+- [production-publish.sh](./scripts/production-publish.sh): Publish a product referencing APIs to a space
+- [production-publish-wsdl.sh](./scripts/production-publish-wsdl.sh): Publish a product referencing an API proxy generated from a WSDL to a space
 
 *Production API Lifecycle*:
 - production-replace.sh: Replace an old version of a product with a new version in a production catalog
