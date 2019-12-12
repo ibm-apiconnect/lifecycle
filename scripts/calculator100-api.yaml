@@ -1,0 +1,439 @@
+swagger: '2.0'
+info:
+  title: Calculator
+  description: ''
+  x-ibm-name: calculator
+  version: 1.0.0
+schemes:
+  - https
+basePath: /Calculator
+produces:
+  - application/xml
+consumes:
+  - text/xml
+securityDefinitions:
+  clientID:
+    type: apiKey
+    name: X-IBM-Client-Id
+    in: header
+    description: ''
+security:
+  - clientID: []
+x-ibm-configuration:
+  type: wsdl
+  phase: realized
+  enforced: true
+  testable: true
+  gateway: datapower-gateway
+  cors:
+    enabled: true
+  wsdl-definition:
+    wsdl: calculator100.wsdl
+    service: Calculator
+    port: ICalculator
+    soap-version: '1.1'
+  assembly:
+    execute:
+      - proxy:
+          title: proxy
+          target-url: 'http://math.com/ICalculator'
+  x-ibm-apiconnect-wsdl:
+    package-version: 1.8.18
+    options: {}
+    messages:
+      info: []
+      warning: []
+      error: []
+paths:
+  /Add:
+    post:
+      summary: Operation Add
+      description: ''
+      operationId: Add
+      x-ibm-soap:
+        soap-action: 'http://math.com/ICalculator/Add'
+        soap-operation: '{http://math.com}Add'
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/AddInput'
+      responses:
+        default:
+          description: ''
+          schema:
+            $ref: '#/definitions/AddOutput'
+  /Subtract:
+    post:
+      summary: Operation Subtract
+      description: ''
+      operationId: Subtract
+      x-ibm-soap:
+        soap-action: 'http://math.com/ICalculator/Subtract'
+        soap-operation: '{http://math.com}Subtract'
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/SubtractInput'
+      responses:
+        default:
+          description: ''
+          schema:
+            $ref: '#/definitions/SubtractOutput'
+definitions:
+  Security:
+    xml:
+      namespace: >-
+        http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+      prefix: wsse
+    description: Header for WS-Security
+    type: object
+    properties:
+      UsernameToken:
+        xml:
+          namespace: >-
+            http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+          prefix: wsse
+        type: object
+        properties:
+          Username:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+          Password:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+          Nonce:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd
+              prefix: wsse
+            type: string
+            properties:
+              EncodingType:
+                xml:
+                  namespace: ''
+                  attribute: true
+                type: string
+          Created:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+      Timestamp:
+        xml:
+          namespace: >-
+            http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+          prefix: wsu
+        type: object
+        properties:
+          Created:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+          Expires:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+            type: string
+          Id:
+            xml:
+              namespace: >-
+                http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd
+              prefix: wsu
+              attribute: true
+            type: string
+  AddInput:
+    description: Input message for wsdl operation Add
+    type: object
+    properties:
+      Envelope:
+        xml:
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+          prefix: soapenv
+        type: object
+        properties:
+          Header:
+            $ref: '#/definitions/AddHeader'
+          Body:
+            xml:
+              namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+              prefix: soapenv
+            type: object
+            properties:
+              Add:
+                $ref: '#/definitions/Add_element_tns'
+            required:
+              - Add
+        required:
+          - Body
+    required:
+      - Envelope
+    x-ibm-schema:
+      wsdl-port: '{http://math.com}ICalculator'
+      wsdl-operation: Add
+      wsdl-message-direction-or-name: AddRequest
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Header>
+        <!-- The Security element should be removed if WS-Security is not enabled on the SOAP target-url -->
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+         <wsse:UsernameToken>
+          <wsse:Username>string</wsse:Username>
+          <wsse:Password>string</wsse:Password>
+          <wsse:Nonce EncodingType="string">string</wsse:Nonce>
+          <wsu:Created>string</wsu:Created>
+         </wsse:UsernameToken>
+         <wsu:Timestamp wsu:Id="string">
+          <wsu:Created>string</wsu:Created>
+          <wsu:Expires>string</wsu:Expires>
+         </wsu:Timestamp>
+        </wsse:Security>
+       </soapenv:Header>
+       <soapenv:Body>
+        <tns:Add xmlns:tns="http://math.com"><!-- mandatory -->
+         <tns:a>3</tns:a>
+         <tns:b>3</tns:b>
+        </tns:Add>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  AddHeader:
+    description: Input headers for wsdl operation Add
+    type: object
+    properties:
+      Security:
+        $ref: '#/definitions/Security'
+  AddOutput:
+    description: Output message for wsdl operation Add
+    type: object
+    properties:
+      Envelope:
+        xml:
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+          prefix: soapenv
+        type: object
+        properties:
+          Body:
+            xml:
+              namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+              prefix: soapenv
+            type: object
+            properties:
+              AddResponse:
+                $ref: '#/definitions/AddResponse_element_tns'
+        required:
+          - Body
+    required:
+      - Envelope
+    x-ibm-schema:
+      wsdl-port: '{http://math.com}ICalculator'
+      wsdl-operation: Add
+      wsdl-message-direction-or-name: AddResponse
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Body>
+        <tns:AddResponse xmlns:tns="http://math.com">
+         <tns:result>3</tns:result>
+        </tns:AddResponse>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  SubtractInput:
+    description: Input message for wsdl operation Subtract
+    type: object
+    properties:
+      Envelope:
+        xml:
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+          prefix: soapenv
+        type: object
+        properties:
+          Header:
+            $ref: '#/definitions/SubtractHeader'
+          Body:
+            xml:
+              namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+              prefix: soapenv
+            type: object
+            properties:
+              Subtract:
+                $ref: '#/definitions/Subtract_element_tns'
+            required:
+              - Subtract
+        required:
+          - Body
+    required:
+      - Envelope
+    x-ibm-schema:
+      wsdl-port: '{http://math.com}ICalculator'
+      wsdl-operation: Subtract
+      wsdl-message-direction-or-name: SubtractRequest
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Header>
+        <!-- The Security element should be removed if WS-Security is not enabled on the SOAP target-url -->
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+         <wsse:UsernameToken>
+          <wsse:Username>string</wsse:Username>
+          <wsse:Password>string</wsse:Password>
+          <wsse:Nonce EncodingType="string">string</wsse:Nonce>
+          <wsu:Created>string</wsu:Created>
+         </wsse:UsernameToken>
+         <wsu:Timestamp wsu:Id="string">
+          <wsu:Created>string</wsu:Created>
+          <wsu:Expires>string</wsu:Expires>
+         </wsu:Timestamp>
+        </wsse:Security>
+       </soapenv:Header>
+       <soapenv:Body>
+        <tns:Subtract xmlns:tns="http://math.com"><!-- mandatory -->
+         <tns:a>3</tns:a>
+         <tns:b>3</tns:b>
+        </tns:Subtract>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  SubtractHeader:
+    description: Input headers for wsdl operation Subtract
+    type: object
+    properties:
+      Security:
+        $ref: '#/definitions/Security'
+  SubtractOutput:
+    description: Output message for wsdl operation Subtract
+    type: object
+    properties:
+      Envelope:
+        xml:
+          namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+          prefix: soapenv
+        type: object
+        properties:
+          Body:
+            xml:
+              namespace: 'http://schemas.xmlsoap.org/soap/envelope/'
+              prefix: soapenv
+            type: object
+            properties:
+              SubtractResponse:
+                $ref: '#/definitions/SubtractResponse_element_tns'
+        required:
+          - Body
+    required:
+      - Envelope
+    x-ibm-schema:
+      wsdl-port: '{http://math.com}ICalculator'
+      wsdl-operation: Subtract
+      wsdl-message-direction-or-name: SubtractResponse
+    example: >-
+
+      <soapenv:Envelope
+      xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+       <soapenv:Body>
+        <tns:SubtractResponse xmlns:tns="http://math.com">
+         <tns:result>3</tns:result>
+        </tns:SubtractResponse>
+       </soapenv:Body>
+      </soapenv:Envelope>
+  Add_element_tns:
+    xml:
+      namespace: 'http://math.com'
+      prefix: tns
+      name: Add
+    type: object
+    properties:
+      a:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+      b:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+    example: |-
+
+      <tns:Add xmlns:tns="http://math.com">
+       <tns:a>3</tns:a>
+       <tns:b>3</tns:b>
+      </tns:Add>
+  AddResponse_element_tns:
+    xml:
+      namespace: 'http://math.com'
+      prefix: tns
+      name: AddResponse
+    type: object
+    properties:
+      result:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+    example: |-
+
+      <tns:AddResponse xmlns:tns="http://math.com">
+       <tns:result>3</tns:result>
+      </tns:AddResponse>
+  Subtract_element_tns:
+    xml:
+      namespace: 'http://math.com'
+      prefix: tns
+      name: Subtract
+    type: object
+    properties:
+      a:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+      b:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+    example: |-
+
+      <tns:Subtract xmlns:tns="http://math.com">
+       <tns:a>3</tns:a>
+       <tns:b>3</tns:b>
+      </tns:Subtract>
+  SubtractResponse_element_tns:
+    xml:
+      namespace: 'http://math.com'
+      prefix: tns
+      name: SubtractResponse
+    type: object
+    properties:
+      result:
+        xml:
+          namespace: 'http://math.com'
+          prefix: tns
+        type: integer
+        format: int32
+    example: |-
+
+      <tns:SubtractResponse xmlns:tns="http://math.com">
+       <tns:result>3</tns:result>
+      </tns:SubtractResponse>
