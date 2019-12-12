@@ -56,7 +56,7 @@ export provider_token=`echo ${response} | jq -r '.access_token'`
 echo
 echo Publish the Product to the Space
 # If sending a zip containing the WSDL instead of a WSDL, the type below should be application/zip
-response=`curl -v -X POST https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel}/publish \
+response=`curl -X POST https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel}/publish \
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
                -F "product=@math100-product.yaml;type=application/yaml" \
