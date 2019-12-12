@@ -23,17 +23,18 @@ export space_travel=${space_travel}
 
 echo
 echo Create the OpenAPI definition from the WSDL
-rm -f calculator100-api.yaml
+rm -f data/calculator100-api.yaml
 apic create:api --api_type wsdl --wsdl calculator100.wsdl
-mv calculator.yaml calculator100-api.yaml
+# apic create:api --api_type wsdl --wsdl calculator100.wsdl
+mv calculator.yaml data/calculator100-api.yaml
 
 
 
 echo
 echo Create the Math Product referencing the Calculator API
-# rm -f math100-product.yaml
-# apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --filename math100-product.yaml
-# apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --gateway-type "datapower-api-gateway" --filename math100-product.yaml
+# rm -f data/math100-product.yaml
+# apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --filename data/math100-product.yaml
+# apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --gateway-type "datapower-api-gateway" --filename data/math100-product.yaml
 # Once created, the API references (eg "$ref: calculator100-api.yaml") must be replaced with "name: api-name:api-version" (eg "name: calculator:1.0.0") (see math100-product.yaml)
 
 
@@ -59,8 +60,8 @@ echo Publish the Product to the Space
 response=`curl -X POST https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel}/publish \
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -F "product=@math100-product.yaml;type=application/yaml" \
-               -F "openapi=@calculator100-api.yaml;type=application/yaml" \
-               -F "wsdl=@calculator100.wsdl;type=application/wsdl"`
+               -F "product=@./data/math100-product.yaml;type=application/yaml" \
+               -F "openapi=@./data/calculator100-api.yaml;type=application/yaml" \
+               -F "wsdl=@./data/calculator100.wsdl;type=application/wsdl"`
 echo ${response} | jq .
 echo ${response} | jq -r '.api_urls'

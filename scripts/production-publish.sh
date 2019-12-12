@@ -23,25 +23,25 @@ export space_travel=${space_travel}
 
 echo
 echo Create the Routes API
-rm -f routes100-api.yaml
-# apic create:api --name "routes" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Routes API" --filename routes100-api.yaml
-apic create:api --name "routes" --version "1.0.0" --title "Routes API" --filename routes100-api.yaml
+rm -f data/routes100-api.yaml
+# apic create:api --name "routes" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Routes API" --filename data/routes100-api.yaml
+apic create:api --name "routes" --version "1.0.0" --title "Routes API" --filename data/routes100-api.yaml
 
 
 
 echo
 echo Create the Trails API
-rm -f trails100-api.yaml
+rm -f data/trails100-api.yaml
 # apic create:api --name "trails" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Trails API" --filename trails100-api.yaml
-apic create:api --name "trails" --version "1.0.0" --title "Trails API" --filename trails100-api.yaml
+apic create:api --name "trails" --version "1.0.0" --title "Trails API" --filename data/trails100-api.yaml
 
 
 
 echo
 echo Create the Climbon Product referencing the Routes and Trails APIs
-# rm -f climbon100-product.yaml
-# apic create:product --name "climbon" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename climbon100-product.yaml
-# apic create:product --name "climbon" --version "1.0.0" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename climbon100-product.yaml
+# rm -f data/climbon100-product.yaml
+# apic create:product --name "climbon" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename data/climbon100-product.yaml
+# apic create:product --name "climbon" --version "1.0.0" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename data/climbon100-product.yaml
 # Once created, the API references (eg "$ref: routes100-api.yaml") must be replaced with "name: api-name:api-version" (eg "name: routes:1.0.0") (see climbon100-product.yaml)
 
 
@@ -66,8 +66,8 @@ echo Publish the Product to the Space
 response=`curl -X POST https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel}/publish \
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
-               -F "product=@climbon100-product.yaml;type=application/yaml" \
-               -F "openapi=@routes100-api.yaml;type=application/yaml" \
-               -F "openapi=@trails100-api.yaml;type=application/yaml"`
+               -F "product=@./data/climbon100-product.yaml;type=application/yaml" \
+               -F "openapi=@./data/routes100-api.yaml;type=application/yaml" \
+               -F "openapi=@./data/trails100-api.yaml;type=application/yaml"`
 echo ${response} | jq .
 echo ${response} | jq -r '.api_urls'
