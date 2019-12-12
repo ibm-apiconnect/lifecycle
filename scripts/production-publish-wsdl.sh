@@ -6,7 +6,7 @@
 
 
 # Overview
-# - Publish a product that generates an OpenAPI proxy from WSDL
+# - Publish a product that references an OpenAPI proxy generated from WSDL
 
 
 
@@ -55,7 +55,7 @@ export provider_token=`echo ${response} | jq -r '.access_token'`
 
 echo
 echo Publish the Product to the Space
-# If sending a zip instead of a WSDL, the type below should be application/zip
+# If sending a zip containing the WSDL instead of a WSDL, the type below should be application/zip
 response=`curl -v -X POST https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel}/publish \
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
