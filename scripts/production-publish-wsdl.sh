@@ -17,6 +17,22 @@ export provider_username=${provider_username}
 export provider_password=${provider_password}
 export porg=${porg}
 export catalog_prod=${catalog_prod}
+export space_travel=${space_travel}
+
+
+
+echo
+echo Create the OpenAPI definition from the WSDL
+rm calculator100-api.yaml
+apic create:api --api_type wsdl --wsdl calculator100.wsdl
+mv calculator.yaml calculator100-api.yaml
+
+
+
+echo
+echo Create the Math Product referencing the Calculator API
+rm math100-product.yaml
+apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --filename math100-product.yaml
 
 
 
@@ -36,9 +52,11 @@ export provider_token=`echo ${response} | jq -r '.access_token'`
 
 
 echo
-echo Publish
-response=`curl -X GET https://${management}/api/spaces/${porg}/${catalog_prod}/${space_travel} \
-               -s -k -H "Accept: application/json" \
-               -H "Authorization: Bearer ${provider_token}"`
+echo Publish the Product to the Space
+response=`curl -X POST ${management}/api/spaces/${porg}/${catalog_space}/${space_travel}/publish \
+               -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
+               -H "Authorization: Bearer ${provider_token}" \
+               -F "product=@math100-product.yaml" \
+               -F "openapi=@calculator-api.yaml"
 echo ${response} | jq .
-export porg_url=`echo ${response} | jq -r '.url'`
+export provider_token=`echo ${response} | jq -r '.access_token'`
