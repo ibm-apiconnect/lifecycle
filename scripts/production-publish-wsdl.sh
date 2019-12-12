@@ -34,7 +34,7 @@ echo Create the Math Product referencing the Calculator API
 # rm -f math100-product.yaml
 # apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --filename math100-product.yaml
 # apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --gateway-type "datapower-api-gateway" --filename math100-product.yaml
-# Once created, the $ref reference to the API file must be replace with name: api-name:api-version (see math100-product.yaml)
+# Once created, the API references (eg "$ref: calculator100-api.yaml") must be replaced with "name: api-name:api-version" (eg "name: calculator:1.0.0") (see math100-product.yaml)
 
 
 

@@ -42,7 +42,7 @@ echo Create the Climbon Product referencing the Routes and Trails APIs
 # rm -f climbon100-product.yaml
 # apic create:product --name "climbon" --version "1.0.0" --gateway-type "datapower-api-gateway" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename climbon100-product.yaml
 # apic create:product --name "climbon" --version "1.0.0" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename climbon100-product.yaml
-# Once created, the $ref reference to the API files must be replace with name: api-name:api-version (see climbon100-product.yaml)
+# Once created, the API references (eg "$ref: routes100-api.yaml") must be replaced with "name: api-name:api-version" (eg "name: routes:1.0.0") (see climbon100-product.yaml)
 
 
 
