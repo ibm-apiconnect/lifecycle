@@ -59,7 +59,7 @@ export provider_token=`echo ${response} | jq -r '.access_token'`
 
 echo
 echo Publish the Product to the Space
-response=`curl -X POST ${management}/api/spaces/${porg}/${catalog_space}/${space_travel}/publish \
+response=`curl -X POST https://${management}/api/spaces/${porg}/${catalog_space}/${space_travel}/publish \
                -s -k -H "Content-Type: multipart/form-data" -H "Accept: application/json" \
                -H "Authorization: Bearer ${provider_token}" \
                -F "product=@climbon100-product.yaml" \
