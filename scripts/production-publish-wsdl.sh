@@ -23,7 +23,7 @@ export space_travel=${space_travel}
 
 echo
 echo Create the OpenAPI definition from the WSDL
-rm calculator100-api.yaml
+rm -f calculator100-api.yaml
 apic create:api --api_type wsdl --wsdl calculator100.wsdl
 mv calculator.yaml calculator100-api.yaml
 
@@ -31,7 +31,7 @@ mv calculator.yaml calculator100-api.yaml
 
 echo
 echo Create the Math Product referencing the Calculator API
-rm math100-product.yaml
+rm -f math100-product.yaml
 apic create:product --name "math" --version "1.0.0" --title "Math Product" --apis "calculator100-api.yaml" --filename math100-product.yaml
 
 

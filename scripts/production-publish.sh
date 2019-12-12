@@ -23,21 +23,21 @@ export space_travel=${space_travel}
 
 echo
 echo Create the Routes API
-rm routes100-api.yaml
+rm -f routes100-api.yaml
 apic create:api --name "routes" --version "1.0.0" --title "Routes API" --filename routes100-api.yaml
 
 
 
 echo
 echo Create the Trails API
-rm trails100-api.yaml
+rm -f trails100-api.yaml
 apic create:api --name "trails" --version "1.0.0" --title "Trails API" --filename trails100-api.yaml
 
 
 
 echo
 echo Create the Climbon Product referencing the Routes and Trails APIs
-rm climbon100-product.yaml
+rm -f climbon100-product.yaml
 apic create:product --name "climbon" --version "1.0.0" --title "Climbon Product" --apis "routes100-api.yaml trails100-api.yaml" --filename climbon100-product.yaml
 
 
