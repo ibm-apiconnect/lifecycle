@@ -24,8 +24,8 @@ export space_travel=${space_travel}
 echo
 echo Create the OpenAPI definition from the WSDL
 rm -f data/calculator100-api.yaml
-apic create:api --api_type wsdl --wsdl calculator100.wsdl
-# apic create:api --api_type wsdl --wsdl calculator100.wsdl
+apic create:api --api_type wsdl --wsdl data/calculator100.wsdl
+# apic create:api --api_type wsdl --wsdl data/calculator100.wsdl
 mv calculator.yaml data/calculator100-api.yaml
 
 
