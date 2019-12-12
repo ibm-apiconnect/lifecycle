@@ -1,0 +1,30 @@
+product: '1.0.0'
+
+info:
+  name: climbon
+  title: Climbon Product
+  version: 1.0.0
+
+apis:
+  'routes100-api':
+    name: routes:1.0.0
+  'trails100-api':
+    name: trails:1.0.0
+
+gateways:
+  - datapower-gateway
+
+visibility:
+  view:
+    type: public
+  subscribe:
+    type: authenticated
+
+plans:
+  default:
+    title: Default Plan
+    description: Default Plan
+    approval: false
+    rate-limit:
+      value: 100/hour
+      hard-limit: false
